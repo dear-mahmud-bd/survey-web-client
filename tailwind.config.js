@@ -11,6 +11,7 @@ export default {
         customPurple2: '#704264', 
         customPurple3: '#522258',
         customPurple4: '#49243E',
+        customPurple4D: '#8C30614D',
       },
     },
   },

@@ -6,7 +6,7 @@ const Navbar = () => {
     const addClass = isActive => isActive ? 'font-semibold underline underline-offset-2' : 'font-semibold';
     const navLinks = <>
         <li><NavLink className={({ isActive }) => addClass(isActive)} to="/">Home</NavLink></li>
-        <li><NavLink className={({ isActive }) => addClass(isActive)} to="/">Surveys</NavLink></li>
+        <li><NavLink className={({ isActive }) => addClass(isActive)} to="/surveys">Surveys</NavLink></li>
         <li><NavLink className={({ isActive }) => addClass(isActive)} to="/">Membership</NavLink></li>
     </>;
 
@@ -24,7 +24,7 @@ const Navbar = () => {
                             {navLinks}
                         </ul>
                     </div>
-                    <Link to="/" className="text-3xl font-bold text-customLightBrown">QueryQuotient</Link>
+                    <Link to="/" className="text-3xl font-bold text-customPurple1">QueryQuotient</Link>
                 </div>
                 <div className="navbar-end gap-2">
                     <div className="navbar-center hidden md:flex">

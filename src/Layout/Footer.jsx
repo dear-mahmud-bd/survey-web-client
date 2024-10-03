@@ -74,7 +74,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="py-6 text-sm text-center dark:text-gray-600">© 2008 Company DMF. All rights reserved.</div>
+            <div className="py-6 text-sm text-center dark:text-gray-600">© Copyright QueryQuotient. All rights reserved.</div>
         </footer>
     );
 };
