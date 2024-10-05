@@ -1,25 +1,27 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import SurveyCard from "../../components/SurveyCard";
+import { axiosPublic } from "../../hooks/useAxiosPublic";
+import Loading from "../../Layout/Shared/Loading";
+import { Helmet } from "react-helmet";
 
 const Surveys = () => {
-    const [surveyData, setSurveyData] = useState([]);
-    useEffect(() => {
-        // Creating an async function inside the useEffect to handle async axios call
-        const fetchSurveyData = async () => {
-            try {
-                const res = await axios.get('../../../public/surveys.json');
-                setSurveyData(res.data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
-        fetchSurveyData();
-    }, [])
-    console.log(surveyData);
+    
+    const { data: surveyData = [], isPending: loading } = useQuery({
+        queryKey: ['allSurvey'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/all-survey');
+            return res.data;
+        }
+    })
+    // console.log(surveyData);
+
+    if(loading) return <Loading/>
 
     return (
         <div>
+            <Helmet>
+                <title>All Survey</title>
+            </Helmet>
             <h1></h1>
 
             <div className="container mx-auto py-8">

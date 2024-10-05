@@ -6,7 +6,7 @@ const Navbar = () => {
     const addClass = isActive => isActive ? 'font-semibold underline underline-offset-2' : 'font-semibold';
     const navLinks = <>
         <li><NavLink className={({ isActive }) => addClass(isActive)} to="/">Home</NavLink></li>
-        <li><NavLink className={({ isActive }) => addClass(isActive)} to="/surveys">Surveys</NavLink></li>
+        <li><NavLink className={({ isActive }) => addClass(isActive)} to="/all-survey">Surveys</NavLink></li>
         <li><NavLink className={({ isActive }) => addClass(isActive)} to="/">Membership</NavLink></li>
     </>;
 
