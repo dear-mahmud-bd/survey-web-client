@@ -4,6 +4,8 @@ import Home from "../Pages/Home/Home";
 import Surveys from "../Pages/Public/Surveys";
 import SurveyDetails from "../Pages/Public/SurveyDetails";
 import { axiosPublic } from "../hooks/useAxiosPublic";
+import SignUp from "../Pages/Public/SignUp";
+import SignIn from "../Pages/Public/SignIn";
 
 
 
@@ -24,6 +26,9 @@ const router = createBrowserRouter([
                     return res.data;
                 }
             },
+            { path: '/sign-in', element: <SignIn /> },
+            { path: '/sign-up', element: <SignUp /> },
+            { path: '/profile', element: <h1>This is Profile</h1> },
 
 
 

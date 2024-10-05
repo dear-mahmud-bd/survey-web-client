@@ -1,7 +1,11 @@
 import { CiLogin, CiLogout } from 'react-icons/ci';
 import { Link, NavLink } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 const Navbar = () => {
+    const {user} = useAuth();
+    console.log(user);
+    
 
     const addClass = isActive => isActive ? 'font-semibold underline underline-offset-2' : 'font-semibold';
     const navLinks = <>
@@ -51,7 +55,7 @@ const Navbar = () => {
                             </li>
                         </ul>
                     </div>
-                    <Link to='/' className="btn font-bold text-white bg-customPurple2 hover:bg-customPurple3">
+                    <Link to='/sign-in' className="btn font-bold text-white bg-customPurple2 hover:bg-customPurple3">
                         Sign In<CiLogin className='text-2xl' />
                     </Link>
                 </div>

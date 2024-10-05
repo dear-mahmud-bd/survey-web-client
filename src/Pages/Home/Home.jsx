@@ -14,7 +14,7 @@ const Home = () => {
             <Banner/>
             <LatestSurveys/> 
             <HowItWorks/>
-            <FeaturedSurveys/> {/* TODO: Show 6 Most Voted Survey */}
+            <FeaturedSurveys/> 
             <Faq/>
         </div>
     );
