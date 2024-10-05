@@ -12,7 +12,7 @@ const Home = () => {
                 <title>QueryQuotient | Home</title>
             </Helmet>
             <Banner/>
-            <LatestSurveys/> {/* TODO: Show 6 Letest Survey */}
+            <LatestSurveys/> 
             <HowItWorks/>
             <FeaturedSurveys/> {/* TODO: Show 6 Most Voted Survey */}
             <Faq/>
