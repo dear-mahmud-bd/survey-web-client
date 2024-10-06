@@ -7,13 +7,18 @@
         "total_vote": 137,
         "category": "Customer Experience",
         "deadline": "Nov 2, 2024",
-        "deadlineISO": { "$date": "2024-11-02T00:00:00Z" },
+        "deadlineISO": {
+            "$date": "2024-11-02T00:00:00Z"
+        },
         "status": "published",
         "created": "Oct 2, 2024",
-        "createdISO": { "$date": "2024-10-02T00:00:00Z" },
+        "createdISO": {
+            "$date": "2024-10-02T00:00:00Z"
+        },
         "createdBy": "surveyor1@example.com",
         "comments": [],
-        "question": "Were you satisfied with your recent purchase experience?"
+        "question": "Were you satisfied with your recent purchase experience?",
+        "voters": []
     },
     {
         "title": "Product Feature Prioritization",
@@ -23,13 +28,18 @@
         "total_vote": 125,
         "category": "Product Development",
         "deadline": "Nov 10, 2024",
-        "deadlineISO": { "$date": "2024-11-10T00:00:00Z" },
+        "deadlineISO": {
+            "$date": "2024-11-10T00:00:00Z"
+        },
         "status": "published",
         "created": "Oct 3, 2024",
-        "createdISO": { "$date": "2024-10-03T00:00:00Z" },
+        "createdISO": {
+            "$date": "2024-10-03T00:00:00Z"
+        },
         "createdBy": "surveyor2@example.com",
         "comments": [],
-        "question": "Should this feature be prioritized for the next product release?"
+        "question": "Should this feature be prioritized for the next product release?",
+        "voters": []
     },
     {
         "title": "Employee Engagement Survey",
@@ -39,13 +49,18 @@
         "total_vote": 160,
         "category": "Human Resources",
         "deadline": "Nov 15, 2024",
-        "deadlineISO": { "$date": "2024-11-15T00:00:00Z" },
+        "deadlineISO": {
+            "$date": "2024-11-15T00:00:00Z"
+        },
         "status": "published",
         "created": "Oct 4, 2024",
-        "createdISO": { "$date": "2024-10-04T00:00:00Z" },
+        "createdISO": {
+            "$date": "2024-10-04T00:00:00Z"
+        },
         "createdBy": "hrteam@example.com",
         "comments": [],
-        "question": "Do you feel engaged and motivated in your current role?"
+        "question": "Do you feel engaged and motivated in your current role?",
+        "voters": []
     },
     {
         "title": "Website Usability Survey",
@@ -55,13 +70,18 @@
         "total_vote": 105,
         "category": "User Experience",
         "deadline": "Nov 20, 2024",
-        "deadlineISO": { "$date": "2024-11-20T00:00:00Z" },
+        "deadlineISO": {
+            "$date": "2024-11-20T00:00:00Z"
+        },
         "status": "published",
         "created": "Sep 5, 2024",
-        "createdISO": { "$date": "2024-09-05T00:00:00Z" },
+        "createdISO": {
+            "$date": "2024-09-05T00:00:00Z"
+        },
         "createdBy": "uxteam@example.com",
         "comments": [],
-        "question": "Was the website easy to navigate and user-friendly?"
+        "question": "Was the website easy to navigate and user-friendly?",
+        "voters": []
     },
     {
         "title": "Marketing Campaign Feedback",
@@ -71,13 +91,18 @@
         "total_vote": 75,
         "category": "Marketing",
         "deadline": "Nov 25, 2024",
-        "deadlineISO": { "$date": "2024-11-25T00:00:00Z" },
+        "deadlineISO": {
+            "$date": "2024-11-25T00:00:00Z"
+        },
         "status": "unpublish",
         "created": "Sep 6, 2024",
-        "createdISO": { "$date": "2024-09-06T00:00:00Z" },
+        "createdISO": {
+            "$date": "2024-09-06T00:00:00Z"
+        },
         "createdBy": "marketing@example.com",
         "comments": [],
-        "question": "Do you think the latest marketing campaign was effective?"
+        "question": "Do you think the latest marketing campaign was effective?",
+        "voters": []
     },
     {
         "title": "Remote Work Policy Survey",
@@ -87,13 +112,18 @@
         "total_vote": 150,
         "category": "Workplace Policies",
         "deadline": "Nov 30, 2024",
-        "deadlineISO": { "$date": "2024-11-30T00:00:00Z" },
+        "deadlineISO": {
+            "$date": "2024-11-30T00:00:00Z"
+        },
         "status": "published",
         "created": "Sep 7, 2024",
-        "createdISO": { "$date": "2024-09-07T00:00:00Z" },
+        "createdISO": {
+            "$date": "2024-09-07T00:00:00Z"
+        },
         "createdBy": "hrpolicy@example.com",
         "comments": [],
-        "question": "Do you support the new remote work policy?"
+        "question": "Do you support the new remote work policy?",
+        "voters": []
     },
     {
         "title": "SaaS Product Satisfaction Survey",
@@ -103,13 +133,18 @@
         "total_vote": 117,
         "category": "Product Satisfaction",
         "deadline": "Dec 5, 2024",
-        "deadlineISO": { "$date": "2024-12-05T00:00:00Z" },
+        "deadlineISO": {
+            "$date": "2024-12-05T00:00:00Z"
+        },
         "status": "published",
         "created": "Sep 8, 2024",
-        "createdISO": { "$date": "2024-09-08T00:00:00Z" },
+        "createdISO": {
+            "$date": "2024-09-08T00:00:00Z"
+        },
         "createdBy": "productteam@example.com",
         "comments": [],
-        "question": "Are you satisfied with the performance of the SaaS platform?"
+        "question": "Are you satisfied with the performance of the SaaS platform?",
+        "voters": []
     },
     {
         "title": "Public Transportation Improvement",
@@ -119,13 +154,18 @@
         "total_vote": 120,
         "category": "Public Policy",
         "deadline": "Dec 10, 2024",
-        "deadlineISO": { "$date": "2024-12-10T00:00:00Z" },
+        "deadlineISO": {
+            "$date": "2024-12-10T00:00:00Z"
+        },
         "status": "published",
         "created": "Sep 9, 2024",
-        "createdISO": { "$date": "2024-09-09T00:00:00Z" },
+        "createdISO": {
+            "$date": "2024-09-09T00:00:00Z"
+        },
         "createdBy": "civicsurvey@example.com",
         "comments": [],
-        "question": "Do you think the current public transportation system needs improvement?"
+        "question": "Do you think the current public transportation system needs improvement?",
+        "voters": []
     },
     {
         "title": "School Lunch Menu Feedback",
@@ -135,13 +175,18 @@
         "total_vote": 180,
         "category": "Education",
         "deadline": "Dec 15, 2024",
-        "deadlineISO": { "$date": "2024-12-15T00:00:00Z" },
+        "deadlineISO": {
+            "$date": "2024-12-15T00:00:00Z"
+        },
         "status": "published",
         "created": "Sep 10, 2024",
-        "createdISO": { "$date": "2024-09-10T00:00:00Z" },
+        "createdISO": {
+            "$date": "2024-09-10T00:00:00Z"
+        },
         "createdBy": "schooladmin@example.com",
         "comments": [],
-        "question": "Are you satisfied with the current school lunch menu options?"
+        "question": "Are you satisfied with the current school lunch menu options?",
+        "voters": []
     },
     {
         "title": "Climate Change Awareness Survey",
@@ -151,13 +196,18 @@
         "total_vote": 180,
         "category": "Environmental",
         "deadline": "Dec 20, 2024",
-        "deadlineISO": { "$date": "2024-12-20T00:00:00Z" },
+        "deadlineISO": {
+            "$date": "2024-12-20T00:00:00Z"
+        },
         "status": "published",
         "created": "Sep 11, 2024",
-        "createdISO": { "$date": "2024-09-11T00:00:00Z" },
+        "createdISO": {
+            "$date": "2024-09-11T00:00:00Z"
+        },
         "createdBy": "ecoteam@example.com",
         "comments": [],
-        "question": "Do you believe more should be done to address climate change?"
+        "question": "Do you believe more should be done to address climate change?",
+        "voters": []
     },
     {
         "title": "Technology Adoption Survey",
@@ -167,13 +217,18 @@
         "total_vote": 123,
         "category": "Technology",
         "deadline": "Dec 25, 2024",
-        "deadlineISO": { "$date": "2024-12-25T00:00:00Z" },
+        "deadlineISO": {
+            "$date": "2024-12-25T00:00:00Z"
+        },
         "status": "published",
         "created": "Sep 12, 2024",
-        "createdISO": { "$date": "2024-09-12T00:00:00Z" },
+        "createdISO": {
+            "$date": "2024-09-12T00:00:00Z"
+        },
         "createdBy": "techteam@example.com",
         "comments": [],
-        "question": "Have the new technologies improved your work experience?"
+        "question": "Have the new technologies improved your work experience?",
+        "voters": []
     },
     {
         "title": "Online Learning Experience Survey",
@@ -183,12 +238,17 @@
         "total_vote": 150,
         "category": "Education",
         "deadline": "Jan 5, 2025",
-        "deadlineISO": { "$date": "2025-01-05T00:00:00Z" },
+        "deadlineISO": {
+            "$date": "2025-01-05T00:00:00Z"
+        },
         "status": "published",
         "created": "Sep 13, 2024",
-        "createdISO": { "$date": "2024-09-13T00:00:00Z" },
+        "createdISO": {
+            "$date": "2024-09-13T00:00:00Z"
+        },
         "createdBy": "onlinelearning@example.com",
         "comments": [],
-        "question": "Are you satisfied with your online learning experience?"
+        "question": "Are you satisfied with your online learning experience?",
+        "voters": []
     }
 ]

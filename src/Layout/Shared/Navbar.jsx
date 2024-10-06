@@ -6,7 +6,7 @@ import { showToast } from '../../utility/useToast';
 
 const Navbar = () => {
     const { user, userSignOut } = useAuth();
-    console.log(user);
+    // console.log(user);
     const handleSignOut = () => {
         Swal.fire({
             title: 'Are you sure?',

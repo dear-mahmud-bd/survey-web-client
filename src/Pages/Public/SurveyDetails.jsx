@@ -1,15 +1,45 @@
 import { Helmet } from "react-helmet";
-import { useLoaderData } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { Tooltip } from "react-tooltip";
+import { useForm } from "react-hook-form";
+import { axiosPublic } from "../../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "../../Layout/Shared/Loading";
 
 
 const SurveyDetails = () => {
-    const survey = useLoaderData();
-    // console.log(survey);
+    const { _id } = useParams();
+    // console.log(_id);
+    const { data: survey, error, isLoading, refetch } = useQuery({
+        queryKey: ['survey', _id],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/all-survey/${_id}`);
+            return res.data;
+        }
+    });
+
+    const { user } = useAuth();
+    // const [vote, setVote] = useState(null);
+    // console.log(user);
+    const tooltipContent = user ? "Click to cast your valuable vote" : "Only logged in users can vote";
+    // const survey = useLoaderData();
+
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const onSubmitVote = (formData) => {
+        const data = { ...formData, email: user?.email };
+        console.log("User Vote:", data);
+        axiosPublic.put(`/all-survey/${survey?._id}`, data)
+            .then(() => {
+                console.log("Vote Added ");
+                refetch();
+            })
+        document.getElementById('voting_modal').close();
+        reset();
+    };
 
 
-
-
-    if (!survey) {
+    if (!survey || error) {
         return (
             <div className="text-center flex flex-col items-center justify-center h-60 md:h-96">
                 <Helmet>
@@ -20,6 +50,9 @@ const SurveyDetails = () => {
             </div>
         );
     }
+
+    if (isLoading) return <Loading />
+    
     return (
         <div>
             <Helmet>
@@ -64,18 +97,57 @@ const SurveyDetails = () => {
 
                             {/* Total Votes */}
                             <span className="text-lg text-gray-500">
-                                <strong>Total Votes: </strong>{survey.yes_vote + survey.no_vote}
+                                <strong>Total Votes: </strong>{survey.total_vote}
                             </span>
                         </div>
 
                         {/* Take Survey Button */}
                         <div className="flex justify-between">
                             <span></span>
-                            <button className="mt-4 px-6 py-2 bg-customPurple2 text-white font-semibold rounded-lg shadow hover:bg-customPurple4 transition duration-300">
+                            <button data-tooltip-id="my-tooltip" data-tooltip-content={tooltipContent} onClick={() => document.getElementById('voting_modal').showModal()} disabled={!user} className={`mt-4 px-6 py-2 text-white font-semibold rounded-lg shadow transition duration-300 ${user ? 'bg-customPurple2 hover:bg-customPurple4 cursor-pointer' : 'bg-gray-400 cursor-not-allowed'}`}>
                                 Take Survey
                             </button>
                         </div>
+                        {/* Open the modal using document.getElementById('ID').showModal() method */}
+                        <dialog id="voting_modal" className="modal modal-bottom sm:modal-middle">
+                            <div className="modal-box">
+                                <div className=" flex justify-between items-center">
+                                    <h3 >
+                                        <span className="font-bold text-lg">Survey Question</span> (Be careful: You can only vote once)
+                                    </h3>
+                                    <form method="dialog">
+                                        <button className="btn btn-sm btn-circle btn-outline text-red-500 hover:bg-red-500 hover:border-red-500">X</button>
+                                    </form>
+                                </div>
+                                <p className="py-4 font-semibold">{survey.question}</p>
+
+                                <form onSubmit={handleSubmit(onSubmitVote)}>
+                                    <div className="flex justify-around py-2">
+                                        <label className="flex items-center">
+                                            <input type="radio" value="yes" {...register("vote", { required: "Please select an option." })} className="radio" />
+                                            <span className="ml-2">Yes</span>
+                                        </label>
+                                        <label className="flex items-center">
+                                            <input type="radio" value="no" {...register("vote", { required: "Please select an option." })} className="radio" />
+                                            <span className="ml-2">No</span>
+                                        </label>
+                                    </div>
+
+                                    {/* Show error message if vote is not selected */}
+                                    {errors.vote && (<p className="text-red-500">{errors.vote.message}</p>)}
+
+                                    <div className="modal-action">
+                                        <button type="submit" className="btn bg-customPurple2 text-white hover:bg-customPurple3" >
+                                            Submit Vote
+                                        </button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </dialog>
+
                     </div>
+                    <Tooltip id="my-tooltip" />
                 </div>
 
                 {/* Right Portion: Comments Section (1/3) */}
@@ -97,12 +169,14 @@ const SurveyDetails = () => {
                         )}
 
                         {/* Add Comment Button (optional) */}
-                        <div className="flex justify-between">
-                            <span></span>
-                            <button className="mt-4 right-0 bottom-0 px-4 py-2 bg-customPurple2 text-white font-semibold rounded-lg shadow hover:bg-customPurple4 transition duration-300">
-                                Add Comment
-                            </button>
-                        </div>
+                        {user &&
+                            <div className="flex justify-between">
+                                <span></span>
+                                <button className="mt-4 right-0 bottom-0 px-4 py-2 bg-customPurple2 text-white font-semibold rounded-lg shadow hover:bg-customPurple4 transition duration-300">
+                                    Add Comment
+                                </button>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const SurveyCard = ({ survey }) => {
     const navigate = useNavigate();
     const handleDetails = (_id) => {
-        console.log(_id);
+        // console.log(_id);
         navigate(`/all-survey/${_id}`)
     };
     return (
