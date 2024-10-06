@@ -1,6 +1,7 @@
 import useAuth from "../../hooks/useAuth";
-import { useLocation, useNavigate } from "react-router-dom";
+import { axiosPublic } from "../../hooks/useAxiosPublic";
 import { showToast } from "../../utility/useToast";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 const WithGoogle = () => {
@@ -10,9 +11,16 @@ const WithGoogle = () => {
 
     const handleGoogleSignIn = () => {
         userSignInWithGoogle()
-            .then(() => {
+            .then((result) => {
                 showToast('success', 'Sign In with Google');
                 navigate(location?.state ? location.state : '/profile');
+                const userInfo = { email: result.user?.email, user_role: 'user', pro_user: false };
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            console.log("User Added ");
+                        }
+                    })
             })
             .catch(() => {
                 showToast('error', 'Not Sign In via Google');

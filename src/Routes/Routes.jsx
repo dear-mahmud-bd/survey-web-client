@@ -6,6 +6,9 @@ import SurveyDetails from "../Pages/Public/SurveyDetails";
 import { axiosPublic } from "../hooks/useAxiosPublic";
 import SignUp from "../Pages/Public/SignUp";
 import SignIn from "../Pages/Public/SignIn";
+import PrivateRoute from "./PrivateRoute";
+import Membership from "../Pages/Public/Membership";
+import UserProfile from "../Pages/Private/UserProfile";
 
 
 
@@ -28,15 +31,16 @@ const router = createBrowserRouter([
             },
             { path: '/sign-in', element: <SignIn /> },
             { path: '/sign-up', element: <SignUp /> },
-            { path: '/profile', element: <h1>This is Profile</h1> },
-
-
-
-
+            { path: '/membership', element: <Membership /> },
+            
+            
+            
+            
             // { path: '*', element: <NotFound /> },
-
-
+            
+            
             // This are private route...
+            { path: '/profile', element: <PrivateRoute> <UserProfile/> </PrivateRoute> },
 
 
         ]

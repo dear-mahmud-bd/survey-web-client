@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet";
 import registerPhoto from "../../assets/signupin.jpg";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import WithGoogle from "../../Layout/SignUpSignIn/WithGoogle";
+import { axiosPublic } from "../../hooks/useAxiosPublic";
 
 
 const SignUp = () => {
@@ -37,6 +38,15 @@ const SignUp = () => {
                     });
                 showToast('success', 'Account Created Successfully');
                 navigate('/profile');
+
+                // hit creaate user api, 
+                const userInfo = { email, user_role: 'user', pro_user: false };
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            console.log("User Added ");
+                        }
+                    })
             })
             .catch(error => {
                 if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
@@ -121,7 +131,7 @@ const SignUp = () => {
                                 Already have an account? <Link to="/sign-in" className="underline">Sign In</Link>
                             </p>
                         </div>
-                        
+
                         <WithGoogle></WithGoogle>
                     </div>
                 </div>
