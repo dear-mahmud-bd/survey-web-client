@@ -9,6 +9,7 @@ import SignIn from "../Pages/Public/SignIn";
 import PrivateRoute from "./PrivateRoute";
 import Membership from "../Pages/Public/Membership";
 import UserProfile from "../Pages/Private/UserProfile";
+import SurveyReport from "../Pages/Private/SurveyReport";
 
 
 
@@ -39,6 +40,7 @@ const router = createBrowserRouter([
 
             // This are private route...
             { path: '/profile', element: <PrivateRoute> <UserProfile /> </PrivateRoute> },
+            { path: '/survey-report/:_id', element: <PrivateRoute> <SurveyReport /> </PrivateRoute> },
 
 
         ]

@@ -163,7 +163,23 @@
             "$date": "2024-09-09T00:00:00Z"
         },
         "createdBy": "civicsurvey@example.com",
-        "comments": [],
+        "comments": [
+            {
+                "user_name": "John Doe",
+                "comment_date": "2024-10-07T12:00:00Z",
+                "message": "Great survey! Looking forward to improvements."
+            },
+            {
+                "user_name": " Doe",
+                "comment_date": "2024-08-07T12:00:00Z",
+                "message": "Great survey! "
+            },
+            {
+                "user_name": "John",
+                "comment_date": "2024-09-07T12:00:00Z",
+                "message": "Looking forward to improvements."
+            }
+        ],
         "question": "Do you think the current public transportation system needs improvement?",
         "voters": []
     },

@@ -44,15 +44,33 @@ const SurveyDetails = () => {
         reset();
     };
 
+
     const { register: registerComment,
         handleSubmit: handleSubmitComment,
         reset: resetComment,
         formState: { errors: commentErrors }
     } = useForm();
     const handleCommentSubmit = (data) => {
-        console.log("Comment Submitted:", data);
+        const currentDate = new Date();
+        const formattedDate = currentDate.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        });
+        const commentData = {
+            name: user?.displayName,
+            comment_date: formattedDate,
+            ...data,
+        };
+        axiosPublic.patch(`/all-survey/${survey?._id}`, commentData)
+            .then(() => {
+                console.log("Comment Added ");
+                refetch();
+            })
         resetComment();
     };
+    // console.log(survey?.comments);
+
 
     if (!survey || error) {
         return (
@@ -117,8 +135,8 @@ const SurveyDetails = () => {
                         </div>
 
                         {/* Take Survey Button */}
-                        <div className="flex justify-between">
-                            <span></span>
+                        <div className="flex justify-between items-center">
+                            <Link to={`/survey-report/${_id}`} className="underline"> Report on this survey</Link>
                             <button data-tooltip-id="my-tooltip" data-tooltip-content={tooltipContent} onClick={() => document.getElementById('voting_modal').showModal()} disabled={!user} className={`mt-4 px-6 py-2 text-white font-semibold rounded-lg shadow transition duration-300 ${user ? 'bg-customPurple2 hover:bg-customPurple4 cursor-pointer' : 'bg-gray-400 cursor-not-allowed'}`}>
                                 Take Survey
                             </button>
@@ -171,11 +189,15 @@ const SurveyDetails = () => {
                         <h3 className="text-xl font-bold mb-4">User Comments</h3>
 
                         {/* If there are comments */}
-                        {survey.comments.length > 0 ? (
-                            <div className="space-y-4">
+                        {survey?.comments?.length > 0 ? (
+                            <div className="space-y-2">
                                 {survey.comments.map((comment, index) => (
                                     <div key={index} className="p-4 bg-gray-100 rounded-lg shadow-sm">
-                                        <p className="text-gray-700">{comment}</p>
+                                        <div className="flex items-center justify-between space-x-2">
+                                            <p className="text-gray-700 text-base font-semibold">{comment?.user_name}</p>
+                                            <span className="text-gray-500 text-xs">{comment?.comment_date}</span>
+                                        </div>
+                                        <p className="text-gray-700 mt-1 text-sm">{comment?.message}</p>
                                     </div>
                                 ))}
                             </div>

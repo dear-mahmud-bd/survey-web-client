@@ -10,7 +10,7 @@ const useProUser = () => {
         queryKey: ['isProUser'],
         enabled: !loading,
         queryFn: async () => {
-            console.log('Checking Pro_User: ', user?.email)
+            // console.log('Checking Pro_User: ', user?.email)
             const res = await axiosPublic.get(`/users/pro_user/${user.email}`);
             // console.log(res.data);
             return res.data?.pro_user;
