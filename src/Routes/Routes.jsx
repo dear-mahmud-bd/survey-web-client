@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import Membership from "../Pages/Public/Membership";
 import UserProfile from "../Pages/Private/UserProfile";
 import SurveyReport from "../Pages/Private/SurveyReport";
+import Dashboard from "../Layout/Dashboard";
 
 
 
@@ -22,27 +23,30 @@ const router = createBrowserRouter([
         children: [
             { path: '/', element: <Home /> },
             { path: '/all-survey', element: <Surveys /> },
-            {
-                path: '/all-survey/:_id',
-                element: <SurveyDetails />,
-                // loader: async ({ params }) => {
-                //     const res = await axiosPublic.get(`/all-survey/${params._id}`);
-                //     return res.data;
-                // }
-            },
+            { path: '/all-survey/:_id', element: <SurveyDetails />, },
             { path: '/sign-in', element: <SignIn /> },
             { path: '/sign-up', element: <SignUp /> },
             { path: '/membership', element: <Membership /> },
-
-
             { path: '*', element: <h1>The Page you Looking for Does not Exist</h1> },
 
 
             // This are private route...
             { path: '/profile', element: <PrivateRoute> <UserProfile /> </PrivateRoute> },
             { path: '/survey-report/:_id', element: <PrivateRoute> <SurveyReport /> </PrivateRoute> },
+        ]
+    },
+    {
+        path: "dashboard",
+        element: <PrivateRoute> <Dashboard> <App /> </Dashboard> </PrivateRoute>,
+        errorElement: <h1>The Page you Looking for Does not Exist</h1>,
+        children: [
+            { path: '', element: <UserProfile /> },
+            { path: 'profile', element: <UserProfile /> },
+            { path: 'users', element: <h1>Users</h1> },
+            { path: 'all-payment', element: <h1>All Payments</h1> },
 
 
+            { path: '*', element: <h1>The Page you Looking for Does not Exist</h1> },
         ]
     },
 ]);
