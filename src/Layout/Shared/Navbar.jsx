@@ -69,7 +69,7 @@ const Navbar = () => {
                             </div>
                             <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt--2 w-52 p-2 shadow">
                                 <li className=' font-semibold text-gray-500 mb-1'>
-                                    <p className=''>displayName</p>
+                                    <p className=''>{user?.displayName}</p>
                                 </li>
                                 <li>
                                     <Link to='/profile'>My Profile</Link>

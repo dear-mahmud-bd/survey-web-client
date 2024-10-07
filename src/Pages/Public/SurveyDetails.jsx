@@ -1,16 +1,22 @@
 import { Helmet } from "react-helmet";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { Tooltip } from "react-tooltip";
 import { useForm } from "react-hook-form";
 import { axiosPublic } from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../Layout/Shared/Loading";
+import useProUser from "../../hooks/useProUser";
+import { FaCrown } from "react-icons/fa";
 
 
 const SurveyDetails = () => {
     const { _id } = useParams();
     // console.log(_id);
+
+    const [isProUser, isProUserLoading] = useProUser();
+    // console.log(isProUser);
+
     const { data: survey, error, isLoading, refetch } = useQuery({
         queryKey: ['survey', _id],
         queryFn: async () => {
@@ -38,6 +44,15 @@ const SurveyDetails = () => {
         reset();
     };
 
+    const { register: registerComment,
+        handleSubmit: handleSubmitComment,
+        reset: resetComment,
+        formState: { errors: commentErrors }
+    } = useForm();
+    const handleCommentSubmit = (data) => {
+        console.log("Comment Submitted:", data);
+        resetComment();
+    };
 
     if (!survey || error) {
         return (
@@ -52,7 +67,7 @@ const SurveyDetails = () => {
     }
 
     if (isLoading) return <Loading />
-    
+
     return (
         <div>
             <Helmet>
@@ -169,14 +184,36 @@ const SurveyDetails = () => {
                         )}
 
                         {/* Add Comment Button (optional) */}
-                        {user &&
-                            <div className="flex justify-between">
+                        {user && (
+                            <div className="flex justify-between w-full">
                                 <span></span>
-                                <button className="mt-4 right-0 bottom-0 px-4 py-2 bg-customPurple2 text-white font-semibold rounded-lg shadow hover:bg-customPurple4 transition duration-300">
-                                    Add Comment
-                                </button>
+                                {isProUserLoading ? (
+                                    <span className="loading loading-spinner loading-xs"></span>
+                                ) : (
+                                    <>
+                                        {isProUser ? (
+                                            <form className="w-full mt-4" onSubmit={handleSubmitComment(handleCommentSubmit)}>
+                                                <div className="flex flex-col w-full">
+                                                    <textarea {...registerComment("comment", { required: "Comment is required" })} name="comment" placeholder="Add your comment here..." rows="2" className="rounded-md border border-gray-300 py-1 px-2 w-full focus:outline-none focus:ring-1 focus:ring-customPurple2" />
+                                                    {commentErrors.comment && <p className="text-red-500 text-sm mt-1">{commentErrors.comment.message}</p>}
+
+                                                    {/* Submit button */}
+                                                    <button type="submit" className="bg-customPurple2 text-white px-6 py-2 rounded-md mt-4 self-end hover:bg-customPurple3 focus:outline-none focus:ring-1 focus:ring-customPurple3">
+                                                        Submit Comment
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        ) : (
+                                            // If not a Pro user, show the link to membership page
+                                            <Link to="/membership" className="mt-4 right-0 bottom-0 px-4 py-2 bg-customPurple2 text-white font-semibold rounded-lg shadow hover:bg-customPurple4 transition duration-300" >
+                                                <span className="flex items-center gap-1"> Upgrade to Pro <FaCrown /></span>
+                                            </Link>
+                                        )}
+                                    </>
+                                )}
                             </div>
-                        }
+                        )}
+
                     </div>
                 </div>
             </div>
