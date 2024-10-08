@@ -11,6 +11,8 @@ import Membership from "../Pages/Public/Membership";
 import UserProfile from "../Pages/Private/UserProfile";
 import SurveyReport from "../Pages/Private/SurveyReport";
 import Dashboard from "../Layout/Dashboard";
+import AllUsers from "../Pages/Admin/ManageUsers/AllUsers";
+import PaymentList from "../Pages/Admin/PaymentList";
 
 
 
@@ -42,8 +44,8 @@ const router = createBrowserRouter([
         children: [
             { path: '', element: <UserProfile /> },
             { path: 'profile', element: <UserProfile /> },
-            { path: 'users', element: <h1>Users</h1> },
-            { path: 'all-payment', element: <h1>All Payments</h1> },
+            { path: 'users', element: <AllUsers/> },
+            { path: 'all-payment', element: <PaymentList/> },
 
 
             { path: '*', element: <h1>The Page you Looking for Does not Exist</h1> },
