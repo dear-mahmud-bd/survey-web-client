@@ -3,8 +3,13 @@ import Navbar from "./Shared/Navbar";
 import Footer from "./Shared/Footer";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
+    const [isAdmin] = useAdmin();
+    console.log(isAdmin);
+    if (isAdmin) console.log("User is Admin");
+
     return (
         <>
             <div className="flex flex-col min-h-screen">
@@ -23,10 +28,12 @@ const Dashboard = () => {
                             <div className="drawer-side">
                                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
                                 <ul className="menu bg-base-200 text-base-content min-h-full w-56 p-4 mt-[69px] lg:mt-0">
-                                    {/* Sidebar content here */}
                                     <li><NavLink to='profile'>My Profile</NavLink></li>
-                                    <li><NavLink to='users'>Users</NavLink></li>
-                                    <li><NavLink to='all-payment'>All Payments</NavLink></li>
+                                    {/* Admin content here */}
+                                    {isAdmin && <>
+                                        <li><NavLink to='users'>Users</NavLink></li>
+                                        <li><NavLink to='all-payment'>All Payments</NavLink></li>
+                                    </>}
                                 </ul>
                             </div>
                         </div>

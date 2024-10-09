@@ -13,6 +13,7 @@ import SurveyReport from "../Pages/Private/SurveyReport";
 import Dashboard from "../Layout/Dashboard";
 import AllUsers from "../Pages/Admin/ManageUsers/AllUsers";
 import PaymentList from "../Pages/Admin/PaymentList";
+import AdminRoute from "./AdminRoute";
 
 
 
@@ -44,8 +45,11 @@ const router = createBrowserRouter([
         children: [
             { path: '', element: <UserProfile /> },
             { path: 'profile', element: <UserProfile /> },
-            { path: 'users', element: <AllUsers/> },
-            { path: 'all-payment', element: <PaymentList/> },
+
+
+            // Admin Route...
+            { path: 'users', element: <AdminRoute> <AllUsers /> </AdminRoute> },
+            { path: 'all-payment', element: <PaymentList /> },
 
 
             { path: '*', element: <h1>The Page you Looking for Does not Exist</h1> },
