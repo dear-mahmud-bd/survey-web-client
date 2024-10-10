@@ -2,8 +2,6 @@
     {
         "title": "Customer Satisfaction Survey",
         "description": "Gather feedback on customer satisfaction with recent purchases.",
-        "yes_vote": 125,
-        "no_vote": 12,
         "total_vote": 137,
         "category": "Customer Experience",
         "deadline": "Nov 2, 2024",
@@ -23,8 +21,6 @@
     {
         "title": "Product Feature Prioritization",
         "description": "Vote on which features should be prioritized in the next release.",
-        "yes_vote": 90,
-        "no_vote": 35,
         "total_vote": 125,
         "category": "Product Development",
         "deadline": "Nov 10, 2024",
@@ -44,8 +40,6 @@
     {
         "title": "Employee Engagement Survey",
         "description": "Measure the engagement levels of employees across departments.",
-        "yes_vote": 140,
-        "no_vote": 20,
         "total_vote": 160,
         "category": "Human Resources",
         "deadline": "Nov 15, 2024",
@@ -65,8 +59,6 @@
     {
         "title": "Website Usability Survey",
         "description": "Collect user feedback on website usability and user experience.",
-        "yes_vote": 75,
-        "no_vote": 30,
         "total_vote": 105,
         "category": "User Experience",
         "deadline": "Nov 20, 2024",
@@ -86,8 +78,6 @@
     {
         "title": "Marketing Campaign Feedback",
         "description": "Evaluate the effectiveness of the latest marketing campaign.",
-        "yes_vote": 60,
-        "no_vote": 15,
         "total_vote": 75,
         "category": "Marketing",
         "deadline": "Nov 25, 2024",
@@ -107,8 +97,6 @@
     {
         "title": "Remote Work Policy Survey",
         "description": "Gather employee opinions on the new remote work policy.",
-        "yes_vote": 110,
-        "no_vote": 40,
         "total_vote": 150,
         "category": "Workplace Policies",
         "deadline": "Nov 30, 2024",
@@ -128,8 +116,6 @@
     {
         "title": "SaaS Product Satisfaction Survey",
         "description": "Collect user satisfaction data on the SaaS platform performance.",
-        "yes_vote": 95,
-        "no_vote": 22,
         "total_vote": 117,
         "category": "Product Satisfaction",
         "deadline": "Dec 5, 2024",
@@ -149,8 +135,6 @@
     {
         "title": "Public Transportation Improvement",
         "description": "Survey to gather public opinions on improving local transportation.",
-        "yes_vote": 85,
-        "no_vote": 35,
         "total_vote": 120,
         "category": "Public Policy",
         "deadline": "Dec 10, 2024",
@@ -186,8 +170,6 @@
     {
         "title": "School Lunch Menu Feedback",
         "description": "Gather student feedback on current school lunch offerings.",
-        "yes_vote": 130,
-        "no_vote": 50,
         "total_vote": 180,
         "category": "Education",
         "deadline": "Dec 15, 2024",
@@ -207,8 +189,6 @@
     {
         "title": "Climate Change Awareness Survey",
         "description": "Understand public awareness and attitudes towards climate change.",
-        "yes_vote": 150,
-        "no_vote": 30,
         "total_vote": 180,
         "category": "Environmental",
         "deadline": "Dec 20, 2024",
@@ -228,8 +208,6 @@
     {
         "title": "Technology Adoption Survey",
         "description": "Gather feedback on adoption of new technologies in the workplace.",
-        "yes_vote": 105,
-        "no_vote": 18,
         "total_vote": 123,
         "category": "Technology",
         "deadline": "Dec 25, 2024",
@@ -249,8 +227,6 @@
     {
         "title": "Online Learning Experience Survey",
         "description": "Understand user experience and challenges with online learning platforms.",
-        "yes_vote": 125,
-        "no_vote": 25,
         "total_vote": 150,
         "category": "Education",
         "deadline": "Jan 5, 2025",

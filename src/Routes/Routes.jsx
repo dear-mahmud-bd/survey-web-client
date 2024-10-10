@@ -14,6 +14,9 @@ import Dashboard from "../Layout/Dashboard";
 import AllUsers from "../Pages/Admin/ManageUsers/AllUsers";
 import PaymentList from "../Pages/Admin/PaymentList";
 import AdminRoute from "./AdminRoute";
+import MySurveys from "../Pages/Surveyor/MySurveys";
+import SurveyorRoute from "./SurveyorRoute";
+import CreateSurvey from "../Pages/Surveyor/CreateSurvey";
 
 
 
@@ -45,6 +48,11 @@ const router = createBrowserRouter([
         children: [
             { path: '', element: <UserProfile /> },
             { path: 'profile', element: <UserProfile /> },
+
+            
+            // Surveyor Route...
+            { path: 'create-survey', element: <CreateSurvey/> },
+            { path: 'my-survey', element: <SurveyorRoute> <MySurveys /> </SurveyorRoute> },
 
 
             // Admin Route...

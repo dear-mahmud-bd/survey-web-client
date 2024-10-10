@@ -39,7 +39,9 @@ const Navbar = () => {
     const navLinks = <>
         <li><NavLink className={({ isActive }) => addClass(isActive)} to="/">Home</NavLink></li>
         <li><NavLink className={({ isActive }) => addClass(isActive)} to="/all-survey">Surveys</NavLink></li>
-        <li><NavLink className={({ isActive }) => addClass(isActive)} to="/dashboard">Dashboard</NavLink></li>
+        {user &&
+            <li><NavLink className={({ isActive }) => addClass(isActive)} to="/dashboard">Dashboard</NavLink></li>
+        }
     </>;
 
     return (

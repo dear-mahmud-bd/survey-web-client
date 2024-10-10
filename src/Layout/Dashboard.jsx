@@ -4,11 +4,14 @@ import Footer from "./Shared/Footer";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useAdmin from "../hooks/useAdmin";
+import useSurveyor from "../hooks/useSurveyor";
 
 const Dashboard = () => {
     const [isAdmin] = useAdmin();
-    console.log(isAdmin);
-    if (isAdmin) console.log("User is Admin");
+    const [isSurveyor] = useSurveyor();
+
+    console.log('Admin: ',isAdmin);
+    console.log('Surveyor: ',isSurveyor);
 
     return (
         <>
@@ -29,6 +32,13 @@ const Dashboard = () => {
                                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
                                 <ul className="menu bg-base-200 text-base-content min-h-full w-56 p-4 mt-[69px] lg:mt-0">
                                     <li><NavLink to='profile'>My Profile</NavLink></li>
+
+                                    {/* Admin content here */}
+                                    {isSurveyor && <>
+                                        <li><NavLink to='create-survey'>Create Survey</NavLink></li>
+                                        <li><NavLink to='my-survey'>My Survey</NavLink></li>
+                                    </>}
+
                                     {/* Admin content here */}
                                     {isAdmin && <>
                                         <li><NavLink to='users'>Users</NavLink></li>

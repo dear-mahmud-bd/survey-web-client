@@ -17,7 +17,7 @@ const SurveyCard = ({ survey }) => {
                 </div>
                 <p className="font-semibold text-gray-600">{survey?.description}</p>
                 <p className="text-lg text-gray-500 border-b-2 border-dashed pb-2">
-                    <strong>Total Votes:</strong> {survey.yes_vote + survey.no_vote}
+                    <strong>Total Votes:</strong> {survey.total_vote}
                 </p>
                 <div className="flex items-center justify-between font-semibold">
                     <span className={`px-4 py-1 ${survey?.status === 'published' ? 'bg-customPurple4D' : 'bg-red-400'} rounded-full text-customPurple4`}>{survey?.status}</span>
