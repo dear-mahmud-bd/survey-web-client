@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loading from "../../Layout/Shared/Loading";
 import useProUser from "../../hooks/useProUser";
 import { FaCrown } from "react-icons/fa";
+import { sweetToast } from "../../utility/useToast";
 
 
 const SurveyDetails = () => {
@@ -37,8 +38,12 @@ const SurveyDetails = () => {
         console.log("User Vote:", data);
         axiosPublic.put(`/all-survey/${survey?._id}`, data)
             .then(() => {
-                console.log("Vote Added ");
-                refetch();
+                const voter = { ...data, name: user?.displayName };
+                axiosPublic.put(`/survey-vote/${survey?._id}`, voter)
+                    .then(() => {
+                        sweetToast('Success!', 'Thanks For Your Voting', 'success');
+                        refetch();
+                    })
             })
         document.getElementById('voting_modal').close();
         reset();
@@ -64,14 +69,21 @@ const SurveyDetails = () => {
         };
         axiosPublic.patch(`/all-survey/${survey?._id}`, commentData)
             .then(() => {
-                console.log("Comment Added ");
-                refetch();
+                const myComent = { ...commentData, email: user?.email, surveyId: survey?._id, };
+                console.log(myComent);
+                axiosPublic.post(`/comment-survey`, myComent)
+                    .then(() => {
+                        console.log("Comment Added ");
+                        refetch();
+                    })
             })
         resetComment();
     };
     // console.log(survey?.comments);
 
 
+    if (isLoading) return <Loading />
+    
     if (!survey || error) {
         return (
             <div className="text-center flex flex-col items-center justify-center h-60 md:h-96">
@@ -83,9 +95,6 @@ const SurveyDetails = () => {
             </div>
         );
     }
-
-    if (isLoading) return <Loading />
-
     return (
         <div>
             <Helmet>

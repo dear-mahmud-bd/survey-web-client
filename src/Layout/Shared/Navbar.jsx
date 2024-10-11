@@ -7,7 +7,7 @@ import { LuLayoutDashboard } from 'react-icons/lu';
 
 const Navbar = () => {
     const location = useLocation();
-    console.log(location);
+    // console.log(location);
     const isDashboard = location.pathname.includes("/dashboard");
 
     const { user, userSignOut } = useAuth();
