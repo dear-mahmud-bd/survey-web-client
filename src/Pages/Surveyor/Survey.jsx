@@ -1,12 +1,8 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const Survey = ({ survey, serial }) => {
     const { _id, title, category } = survey;
-
-    const handleViewDetails = (_id, category) => {
-        console.log(_id, category);
-        
-    };
 
     return (
         <>
@@ -27,14 +23,14 @@ const Survey = ({ survey, serial }) => {
                     </div>
                 </td>
                 <td>
-                    <button
-                        onClick={() => handleViewDetails(_id, category)}
-                        className="btn btn-info btn-xs text-white">Details</button>
+                    <Link to={`/dashboard/my-survey/${_id}`} className="btn btn-info btn-link text-customPurple3">
+                        Details
+                    </Link>
                 </td>
                 <td>
-                    <button
-                        onClick={() => handleViewDetails(_id, category)}
-                        className="btn btn-info text-white">Update</button>
+                    <Link to={`/dashboard/my-survey/update/${_id}`} className="btn btn-info btn-sm text-white">
+                        Update
+                    </Link>
                 </td>
             </tr>
         </>
@@ -44,7 +40,5 @@ const Survey = ({ survey, serial }) => {
 Survey.propTypes = {
     survey: PropTypes.object,
     serial: PropTypes.number,
-    // services: PropTypes.array.isRequired,
-    // setServices: PropTypes.func.isRequired,
 };
 export default Survey;

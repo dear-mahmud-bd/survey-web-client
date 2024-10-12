@@ -17,6 +17,8 @@ import AdminRoute from "./AdminRoute";
 import MySurveys from "../Pages/Surveyor/MySurveys";
 import SurveyorRoute from "./SurveyorRoute";
 import CreateSurvey from "../Pages/Surveyor/CreateSurvey";
+import UpdateSurvey from "../Pages/Surveyor/UpdateSurvey";
+import SurveyResult from "../Pages/Surveyor/SurveyResult";
 
 
 
@@ -53,6 +55,8 @@ const router = createBrowserRouter([
             // Surveyor Route...
             { path: 'create-survey', element: <CreateSurvey/> },
             { path: 'my-survey', element: <SurveyorRoute> <MySurveys /> </SurveyorRoute> },
+            { path: 'my-survey/:_id', element: <SurveyorRoute> <SurveyResult /> </SurveyorRoute> },
+            { path: 'my-survey/update/:_id', element: <SurveyorRoute> <UpdateSurvey /> </SurveyorRoute> },
 
 
             // Admin Route...
