@@ -53,7 +53,7 @@ const UpdateSurvey = () => {
     const handleUpdateSurvey = (formData) => {
         const deadlineISO = new Date(formData.surveyDeadline).toISOString();
         const data = { ...formData, deadlineISO: { $date: deadlineISO } };
-        axiosPublic.put(`/all-survey/${updateSurvey?._id}`, data)
+        axiosPublic.put(`/my-survey/${updateSurvey?._id}`, data)
             .then(() => {
                 console.log("Survey Updated ");
                 showToast('success', 'Survey Updated successfully');
@@ -178,7 +178,7 @@ const UpdateSurvey = () => {
 
                 <div className="flex justify-end mt-6">
                     <button type="submit" className="btn bg-customPurple2 hover:bg-customPurple3 text-white">
-                        Create Survey
+                        Update Survey
                     </button>
                 </div>
             </form>

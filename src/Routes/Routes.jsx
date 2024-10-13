@@ -11,16 +11,16 @@ import Membership from "../Pages/Public/Membership";
 import UserProfile from "../Pages/Private/UserProfile";
 import SurveyReport from "../Pages/Private/SurveyReport";
 import Dashboard from "../Layout/Dashboard";
+import AdminRoute from "./AdminRoute";
 import AllUsers from "../Pages/Admin/ManageUsers/AllUsers";
 import PaymentList from "../Pages/Admin/PaymentList";
-import AdminRoute from "./AdminRoute";
-import MySurveys from "../Pages/Surveyor/MySurveys";
 import SurveyorRoute from "./SurveyorRoute";
+import MySurveys from "../Pages/Surveyor/MySurveys";
 import CreateSurvey from "../Pages/Surveyor/CreateSurvey";
 import UpdateSurvey from "../Pages/Surveyor/UpdateSurvey";
 import SurveyResult from "../Pages/Surveyor/SurveyResult";
-
-
+import UserReport from "../Pages/Private/UserReport";
+import UserParticipation from "../Pages/Private/UserParticipation";
 
 
 const router = createBrowserRouter([
@@ -50,6 +50,9 @@ const router = createBrowserRouter([
         children: [
             { path: '', element: <UserProfile /> },
             { path: 'profile', element: <UserProfile /> },
+            { path: 'my-participation', element: <UserParticipation/> },
+            { path: 'my-report', element: <UserReport/> },
+            { path: 'my-comments', element: <p>My comments on Survey...</p> }, // TODO: _ _ _
 
             
             // Surveyor Route...
