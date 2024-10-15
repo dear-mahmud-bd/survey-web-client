@@ -1,17 +1,21 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, Link } from "react-router-dom";
 import Navbar from "./Shared/Navbar";
 import Footer from "./Shared/Footer";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useAdmin from "../hooks/useAdmin";
 import useSurveyor from "../hooks/useSurveyor";
+import useProUser from "../hooks/useProUser";
+import { FaCrown } from "react-icons/fa";
 
 const Dashboard = () => {
     const [isAdmin] = useAdmin();
     const [isSurveyor] = useSurveyor();
+    const [isProUser] = useProUser();
 
     console.log('Admin: ', isAdmin);
     console.log('Surveyor: ', isSurveyor);
+    console.log('ProUser: ', isProUser);
 
     return (
         <>
@@ -36,7 +40,15 @@ const Dashboard = () => {
                                     <li><NavLink to='profile'>My Profile</NavLink></li>
                                     <li><NavLink to='my-participation'>My Participation</NavLink></li>
                                     <li><NavLink to='my-report'>My Report</NavLink></li>
-                                    <li><NavLink to='my-comments' className='mb-5'>My Comments</NavLink></li>
+                                    <li className='mb-5'>{isProUser ?
+                                        <NavLink to='my-comments'>
+                                            My Comments
+                                        </NavLink>
+                                        :
+                                        <Link to="/membership">
+                                            <span className="flex items-center gap-1">My Comments <FaCrown /></span>
+                                        </Link>
+                                    }</li>
 
                                     {/* Admin content here */}
                                     {isSurveyor && <>
@@ -49,6 +61,7 @@ const Dashboard = () => {
                                     {isAdmin && <>
                                         <div className="divider m-0 p-0">As Admin</div>
                                         <li><NavLink to='users'>Users</NavLink></li>
+                                        <li><NavLink to='survey-status'>Survey Status</NavLink></li>
                                         <li><NavLink to='all-payment'>All Payments</NavLink></li>
                                     </>}
                                 </ul>

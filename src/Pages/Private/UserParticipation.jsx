@@ -32,7 +32,7 @@ const UserParticipation = () => {
     }
 
     return (
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto">
             <div className='mb-5 py-5 bg-gray-200 rounded-lg'>
                 <h1 className='text-center text-4xl font-bold'>My Survey Participation</h1>
             </div>

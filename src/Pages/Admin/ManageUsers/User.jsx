@@ -39,7 +39,6 @@ const User = ({ allUsers, refetch }) => {
                             <th>Email</th>
                             <th>Role</th>
                             <th>Pro-User</th>
-                            <th>Pro-Surveyor</th>
                             <th>Change Role</th>
                         </tr>
                     </thead>
@@ -50,7 +49,6 @@ const User = ({ allUsers, refetch }) => {
                                 <td>{user.email}</td>
                                 <td>{user.user_role}</td>
                                 <td>{user.pro_user ? 'Yes' : 'No'}</td>
-                                <td>{user.pro_user ? 'No' : 'Yes'}</td>
                                 <td>
                                     {/* Dropdown for changing the user role */}
                                     <select onChange={(e) => handleRoleChange(user._id, e.target.value)} value={user.user_role} className="font-semibold select select-bordered select-xs" disabled={user.user_role === "admin"} >

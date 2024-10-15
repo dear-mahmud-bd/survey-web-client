@@ -42,11 +42,15 @@ const UserProfile = () => {
             <Helmet>
                 <title>My Profile</title>
             </Helmet>
+            
+            <div className='mb-5 py-5 bg-gray-200 rounded-lg'>
+                <h1 className='text-center text-4xl font-bold'>My Profile</h1>
+            </div>
 
             <div className="p-2 rounded-lg md:flex justify-between items-center">
                 <div className="md:w-1/2 pb-5 flex justify-center items-cente mx-auto">
                     <div className='flex flex-col items-center'>
-                        <img src={`${user?.photoURL ? user?.photoURL : 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'}`}  alt="User Profile" className="w-32 h-32 rounded-full shadow-xl" />
+                        <img src={`${user?.photoURL ? user?.photoURL : 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'}`} alt="User Profile" className="w-32 h-32 rounded-full shadow-xl" />
                         <h2 className="text-2xl font-semibold mt-2">{user?.displayName}</h2>
                         <p className="text-gray-600">{user?.email}</p>
                     </div>

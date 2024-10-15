@@ -1,22 +1,15 @@
-import { useQuery } from "@tanstack/react-query";
 import SurveyCard from "../../components/SurveyCard";
-import { axiosPublic } from "../../hooks/useAxiosPublic";
 import Loading from "../../Layout/Shared/Loading";
 import { Helmet } from "react-helmet";
 import { useState } from "react";
+import useAllSurveys from "../../hooks/useAllSurveys";
 
 const Surveys = () => {
     const [selectedCategory, setSelectedCategory] = useState('');
     const [sortOrder, setSortOrder] = useState(''); // 'asc' or 'desc'
 
-    const { data: surveyData = [], isPending: loading } = useQuery({
-        queryKey: ['allSurvey'],
-        queryFn: async () => {
-            const res = await axiosPublic.get('/all-survey');
-            return res.data;
-        }
-    });
-
+    const [surveyData, loading] = useAllSurveys();
+    
     const filteredSurveys = selectedCategory ? surveyData.filter(survey => survey.category === selectedCategory) : surveyData;
 
     const sortedSurveys = [...filteredSurveys].sort((a, b) => {
