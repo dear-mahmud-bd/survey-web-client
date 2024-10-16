@@ -23,6 +23,7 @@ import UserReport from "../Pages/Private/UserReport";
 import UserParticipation from "../Pages/Private/UserParticipation";
 import UserComments from "../Pages/Private/UserComments";
 import AllSurvey from "../Pages/Admin/AllSurvey";
+import SurveyFeedback from "../Pages/Surveyor/SurveyFeedback";
 
 
 const router = createBrowserRouter([
@@ -62,6 +63,7 @@ const router = createBrowserRouter([
             { path: 'my-survey', element: <SurveyorRoute> <MySurveys /> </SurveyorRoute> },
             { path: 'my-survey/:_id', element: <SurveyorRoute> <SurveyResult /> </SurveyorRoute> },
             { path: 'my-survey/update/:_id', element: <SurveyorRoute> <UpdateSurvey /> </SurveyorRoute> },
+            { path: 'my-survey-feedback', element: <SurveyorRoute> <SurveyFeedback /> </SurveyorRoute> },
 
 
             // Admin Route...

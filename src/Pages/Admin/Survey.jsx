@@ -12,12 +12,12 @@ const Survey = ({ surveys, refetch }) => {
 
     const handleSubmitFeedback = () => {
         if (!reason) {
-            alert("Please provide a reason for unpublishing");
+            showToast('error',"Please provide a reason for unpublishing");
             return;
         }
         const feedbackData = { ...selectedSurvey, reason: reason };
         console.log(feedbackData);
-        axiosPublic.post(`/survey-feedback`, selectedSurvey)
+        axiosPublic.post(`/survey-feedback`, feedbackData)
             .then(() => {
                 axiosPublic.patch(`/survey-status/${selectedSurvey.surveyId}`, selectedSurvey)
                     .then(() => {
@@ -31,13 +31,13 @@ const Survey = ({ surveys, refetch }) => {
     };
 
     
-    const handleStatusChange = (_id, value) => {
-        const updatedSurvey = { surveyId: _id, value };
+    const handleStatusChange = (_id, email, value) => {
+        const updatedSurvey = { surveyId: _id, email, value };
+        setSelectedSurvey(updatedSurvey);
         if (value === 'unpublished') {
-            setSelectedSurvey(updatedSurvey);
             setIsModalOpen(true);
         } else {
-            setSelectedSurvey(updatedSurvey);
+            // setSelectedSurvey(updatedSurvey);
             Swal.fire({
                 title: 'Are you sure?',
                 text: `You want to Published this`,
@@ -48,11 +48,15 @@ const Survey = ({ surveys, refetch }) => {
                 confirmButtonText: 'Yes!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    axiosPublic.patch(`/survey-status/${selectedSurvey.surveyId}`, selectedSurvey)
+                    // console.log(selectedSurvey?.surveyId); // first time it show undefine why
+                    axiosPublic.patch(`/survey-status/${_id}`, {value}) // first time it show undefine why
                         .then(() => {
                             console.log("Survey");
                             showToast('success','Status updated to published')
                             refetch();
+                        })
+                        .catch(()=>{
+                            showToast('error','Somrthing Wrong Try Again')
                         })
                 }
             })
@@ -79,9 +83,9 @@ const Survey = ({ surveys, refetch }) => {
                                 <td>{survey.title}</td>
                                 <td><span className='text-xs'>{survey.createdBy}</span></td>
                                 <td>
-                                    <select onChange={(e) => handleStatusChange(survey._id, e.target.value)} value={survey.status} className="font-semibold select select-bordered select-xs" >
-                                        <option value="published">Published</option>
-                                        <option value="unpublished">Unpublished</option>
+                                    <select onChange={(e) => handleStatusChange(survey._id,survey.createdBy, e.target.value)} value={survey.status} className="font-semibold select select-bordered select-xs" >
+                                        <option value="published"  disabled={survey.status === 'published'}>Published</option>
+                                        <option value="unpublished"  disabled={survey.status === 'unpublished'}>Unpublished</option>
                                     </select>
                                 </td>
                             </tr>

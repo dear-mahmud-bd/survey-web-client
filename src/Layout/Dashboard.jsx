@@ -54,7 +54,8 @@ const Dashboard = () => {
                                     {isSurveyor && <>
                                         <div className="divider m-0 p-0">As Surveyor</div>
                                         <li><NavLink to='create-survey'>Create Survey</NavLink></li>
-                                        <li><NavLink to='my-survey' className='mb-5'>My Survey</NavLink></li>
+                                        <li><NavLink to='my-survey'>My Survey</NavLink></li>
+                                        <li><NavLink to='my-survey-feedback' className='mb-5'>My Survey Feedback</NavLink></li>
                                     </>}
 
                                     {/* Admin content here */}
