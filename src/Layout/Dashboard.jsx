@@ -13,9 +13,9 @@ const Dashboard = () => {
     const [isSurveyor] = useSurveyor();
     const [isProUser] = useProUser();
 
-    console.log('Admin: ', isAdmin);
-    console.log('Surveyor: ', isSurveyor);
-    console.log('ProUser: ', isProUser);
+    // console.log('Admin: ', isAdmin);
+    // console.log('Surveyor: ', isSurveyor);
+    // console.log('ProUser: ', isProUser);
 
     return (
         <>

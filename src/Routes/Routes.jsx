@@ -56,6 +56,7 @@ const router = createBrowserRouter([
             { path: 'my-participation', element: <UserParticipation/> },
             { path: 'my-report', element: <UserReport/> },
             { path: 'my-comments', element: <UserComments/> }, 
+            { path: 'payment-history', element: <p>Payment History</p> }, 
 
             
             // Surveyor Route...
