@@ -17,7 +17,7 @@ const useAxiosSecure = () => {
     useEffect(() => {
         // Request interceptor to add token to headers
         axiosSecure.interceptors.request.use(config => {
-            console.log("Stoped by interceptor");
+            // console.log("Stoped by interceptor");
 
             const token = localStorage.getItem('access-token');
             if (token) {

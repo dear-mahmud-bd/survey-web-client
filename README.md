@@ -1,9 +1,9 @@
-# [QueryQuotient](http://localhost:5173/) a digital survey web application 
+# [QueryQuotient](https://survey-web-app-04.web.app/) a digital survey web application 
 
 **QueryQuotient** is a full-featured Survey Application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. It provides users with an intuitive platform for creating, voting, and analyzing surveys. This app includes payment functionalities, user role management, and an admin dashboard for robust survey and user interaction control.
 
 ## Live Website
-[Click Here to Visit Website](http://localhost:5173/)
+[Click Here to Visit Website](https://survey-web-app-04.web.app/)
 
 ## Backend Repository
 [QueryQuotient Backend Code](https://github.com/dear-mahmud-bd/survey-web-server)
@@ -91,7 +91,6 @@
 Admin Email:
 ``` 
 hira@gmail.com
-
 ```
 Admin Password:
 ``` 
