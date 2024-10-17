@@ -1,11 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Home from "../Pages/Home/Home";
-import Surveys from "../Pages/Public/Surveys";
-import SurveyDetails from "../Pages/Public/SurveyDetails";
-// import { axiosPublic } from "../hooks/useAxiosPublic";
 import SignUp from "../Pages/Public/SignUp";
 import SignIn from "../Pages/Public/SignIn";
+import Surveys from "../Pages/Public/Surveys";
+import SurveyDetails from "../Pages/Public/SurveyDetails";
 import Membership from "../Pages/Public/Membership";
 import PrivateRoute from "./PrivateRoute";
 import UserProfile from "../Pages/Private/UserProfile";
@@ -37,7 +36,6 @@ const router = createBrowserRouter([
             { path: '/', element: <Home /> },
             { path: '/all-survey', element: <Surveys /> },
             { path: '/all-survey/:_id', element: <SurveyDetails />, },
-            { path: '/survey-result/:_id', element: <VoterResult /> },
             { path: '/sign-in', element: <SignIn /> },
             { path: '/sign-up', element: <SignUp /> },
             { path: '*', element: <NotFound /> },
@@ -47,6 +45,7 @@ const router = createBrowserRouter([
             { path: '/profile', element: <PrivateRoute> <UserProfile /> </PrivateRoute> },
             { path: '/membership', element: <PrivateRoute> <Membership /> </PrivateRoute> },
             { path: '/survey-report/:_id', element: <PrivateRoute> <SurveyReport /> </PrivateRoute> },
+            { path: '/survey-result/:_id', element: <PrivateRoute> <VoterResult /> </PrivateRoute> },
         ]
     },
     {
@@ -62,7 +61,7 @@ const router = createBrowserRouter([
 
 
             // Surveyor Route...
-            { path: 'create-survey', element: <SurveyorRoute> <CreateSurvey /> </SurveyorRoute>},
+            { path: 'create-survey', element: <SurveyorRoute> <CreateSurvey /> </SurveyorRoute> },
             { path: 'my-survey', element: <SurveyorRoute> <MySurveys /> </SurveyorRoute> },
             { path: 'my-survey/:_id', element: <SurveyorRoute> <SurveyResult /> </SurveyorRoute> },
             { path: 'my-survey/update/:_id', element: <SurveyorRoute> <UpdateSurvey /> </SurveyorRoute> },
@@ -72,7 +71,7 @@ const router = createBrowserRouter([
             // Admin Route...
             { path: 'users', element: <AdminRoute> <AllUsers /> </AdminRoute> },
             { path: 'survey-status', element: <AdminRoute> <AllSurvey /> </AdminRoute> },
-            { path: 'all-payment', element: <AdminRoute> <PaymentList /> </AdminRoute>},
+            { path: 'all-payment', element: <AdminRoute> <PaymentList /> </AdminRoute> },
 
 
             { path: '*', element: <NotFound /> },

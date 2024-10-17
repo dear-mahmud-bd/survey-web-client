@@ -6,10 +6,12 @@ import Loading from "../../Layout/Shared/Loading";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import { sweetToast } from "../../utility/useToast";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const SurveyReport = () => {
     const { user } = useAuth();
     const { _id } = useParams();
+    const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
     // console.log(_id);
     const { data: survey, error, isLoading } = useQuery({
@@ -38,7 +40,7 @@ const SurveyReport = () => {
             ...data,
         };
         // console.log("Report Data:", reportData);
-        axiosPublic.post(`/report-survey`, reportData)
+        axiosSecure.post(`/report-survey`, reportData)
             .then(() => {
                 // console.log("Report Added ");
                 sweetToast('Success!', 'Report Added Successfully', 'success');

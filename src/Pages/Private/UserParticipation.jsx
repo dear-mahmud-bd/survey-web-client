@@ -1,17 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../hooks/useAuth";
-import { axiosPublic } from "../../hooks/useAxiosPublic";
 import { Helmet } from "react-helmet";
 import Loading from "../../Layout/Shared/Loading";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const UserParticipation = () => {
     const { user } = useAuth();
+    const axiosSecure = useAxiosSecure();
 
     const { data: userParticipation = [], error, isLoading } = useQuery({
         queryKey: ['userParticipation'],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/users-participation/${user?.email}`);
+            const res = await axiosSecure.get(`/users-participation/${user?.email}`);
             return res.data;
         }
     });

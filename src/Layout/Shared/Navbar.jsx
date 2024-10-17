@@ -78,7 +78,7 @@ const Navbar = () => {
                             <div className="dropdown dropdown-hover dropdown-end">
                                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                     <div className="w-20 rounded-full ring ring-offset-2 ring-customPurple4">
-                                        <img src={`${user?.photoURL ? user?.photoURL : 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'}`} alt="Profile Img" />
+                                        <img src={`${user?.photoURL ? user?.photoURL : 'https://i.ibb.co.com/jD1GTj4/user.png'}`} alt="Profile Img" />
                                     </div>
                                 </div>
                                 <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt--2 w-52 p-2 shadow">

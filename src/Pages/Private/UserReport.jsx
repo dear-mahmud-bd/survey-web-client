@@ -1,17 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
-import { axiosPublic } from "../../hooks/useAxiosPublic";
 import useAuth from "../../hooks/useAuth";
 import Loading from "../../Layout/Shared/Loading";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const UserReport = () => {
     const { user } = useAuth();
+    const axiosSecure = useAxiosSecure();
 
     const { data: userReport = [], error, isLoading } = useQuery({
         queryKey: ['userReport'],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/user-report/${user?.email}`);
+            const res = await axiosSecure.get(`/user-report/${user?.email}`);
             return res.data;
         }
     });

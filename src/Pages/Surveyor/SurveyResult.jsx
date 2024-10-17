@@ -1,18 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { axiosPublic } from "../../hooks/useAxiosPublic";
 import Loading from "../../Layout/Shared/Loading";
 import { Helmet } from "react-helmet";
 import { Cell, Pie, PieChart, Tooltip } from "recharts";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const SurveyResult = () => {
     const { _id } = useParams();
+    const axiosSecure = useAxiosSecure();
 
     const { data: surveyResult = [], error, isLoading } = useQuery({
         queryKey: ['surveyResult', _id],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/survey-result/${_id}`);
+            const res = await axiosSecure.get(`/survey-result/${_id}`);
             return res.data;
         }
     });

@@ -4,9 +4,11 @@ import { axiosPublic } from "../../hooks/useAxiosPublic";
 import Loading from "../../Layout/Shared/Loading";
 import { Pie, PieChart, Cell } from "recharts";
 import { Helmet } from "react-helmet";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const VoterResult = () => {
     const { _id } = useParams();
+    const axiosSecure = useAxiosSecure();
 
     const { data: survey, error: err, isLoading: loading } = useQuery({
         queryKey: ['surveyRes', _id],
@@ -18,7 +20,7 @@ const VoterResult = () => {
     const { data: surveyResult, error, isLoading } = useQuery({
         queryKey: ['voterResult', _id],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/voter-result/${_id}`);
+            const res = await axiosSecure.get(`/voter-result/${_id}`);
             return res.data;
         }
     });

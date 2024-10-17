@@ -1,18 +1,20 @@
 import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
-import { axiosPublic } from "../../hooks/useAxiosPublic";
 import Loading from "../../Layout/Shared/Loading";
 import { DayPicker } from "react-day-picker";
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { showToast } from "../../utility/useToast";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { axiosPublic } from "../../hooks/useAxiosPublic";
 
 
 const UpdateSurvey = () => {
     const { user } = useAuth();
     const { _id } = useParams();
+    const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
 
     const [selectedDate, setSelectedDate] = useState(null);
@@ -53,7 +55,7 @@ const UpdateSurvey = () => {
     const handleUpdateSurvey = (formData) => {
         const deadlineISO = new Date(formData.surveyDeadline).toISOString();
         const data = { ...formData, deadlineISO: { $date: deadlineISO } };
-        axiosPublic.put(`/my-survey/${updateSurvey?._id}`, data)
+        axiosSecure.put(`/my-survey/${updateSurvey?._id}`, data)
             .then(() => {
                 // console.log("Survey Updated ");
                 showToast('success', 'Survey Updated successfully');

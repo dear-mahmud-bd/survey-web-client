@@ -33,20 +33,19 @@ const SignUp = () => {
                 userUpdateProfile(name, url)
                     .then(() => {
                         showToast('success', 'Profile Updated');
+                        // hit creaate user api, 
+                        const userInfo = { email, user_role: 'user', pro_user: false };
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log("User Added ");
+                                }
+                            })
                     }).catch(() => {
                         showToast('warn', 'Profile Not Updated');
                     });
                 showToast('success', 'Account Created Successfully');
                 navigate('/profile');
-
-                // hit creaate user api, 
-                const userInfo = { email, user_role: 'user', pro_user: false };
-                axiosPublic.post('/users', userInfo)
-                    .then(res => {
-                        if (res.data.insertedId) {
-                            // console.log("User Added ");
-                        }
-                    })
             })
             .catch(error => {
                 if (error.message === 'Firebase: Error (auth/email-already-in-use).') {

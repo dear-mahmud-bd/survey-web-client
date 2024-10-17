@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import Swal from 'sweetalert2';
-import { axiosPublic } from '../../../hooks/useAxiosPublic';
 import { showToast } from '../../../utility/useToast';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 
 const User = ({ allUsers, refetch }) => {
+    const axiosSecure = useAxiosSecure();
     // console.log(allUsers);
     const handleRoleChange = (_id, role) => {
         const data = { role: role };
@@ -20,7 +21,7 @@ const User = ({ allUsers, refetch }) => {
             cancelButtonText: 'No'
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosPublic.put(`/user-role/${_id}`, data)
+                axiosSecure.put(`/user-role/${_id}`, data)
                     .then(() => {
                         showToast('success', `User role updated to ${role}`);
                         refetch();

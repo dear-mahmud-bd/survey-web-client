@@ -1,14 +1,15 @@
 
 import { useQuery } from '@tanstack/react-query';
-import { axiosPublic } from '../../hooks/useAxiosPublic';
 import Loading from '../../Layout/Shared/Loading';
 import { Helmet } from 'react-helmet';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const PaymentList = () => {
+    const axiosSecure = useAxiosSecure();
     const { data: payments = [], isPending: loading } = useQuery({
         queryKey: ['allPayments'],
         queryFn: async () => {
-            const res = await axiosPublic.get('/payments');
+            const res = await axiosSecure.get('/payments');
             return res.data;
         }
     });

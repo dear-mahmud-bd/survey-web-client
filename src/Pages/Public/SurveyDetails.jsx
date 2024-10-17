@@ -9,10 +9,12 @@ import Loading from "../../Layout/Shared/Loading";
 import useProUser from "../../hooks/useProUser";
 import { FaCrown } from "react-icons/fa";
 import { sweetToast } from "../../utility/useToast";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const SurveyDetails = () => {
     const { _id } = useParams();
+    const axiosSecure = useAxiosSecure();
     // console.log(_id);
 
     const [isProUser, isProUserLoading] = useProUser();
@@ -44,10 +46,10 @@ const SurveyDetails = () => {
     const onSubmitVote = (formData) => {
         const data = { ...formData, email: user?.email };
         // console.log("User Vote:", data);
-        axiosPublic.put(`/all-survey/${survey?._id}`, data)
+        axiosSecure.put(`/all-survey/${survey?._id}`, data)
             .then(() => {
                 const voter = { ...data, name: user?.displayName };
-                axiosPublic.put(`/survey-vote/${survey?._id}`, voter)
+                axiosSecure.put(`/survey-vote/${survey?._id}`, voter)
                     .then(() => {
                         sweetToast('Success!', 'Thanks For Your Voting', 'success');
                         refetch();
@@ -75,11 +77,11 @@ const SurveyDetails = () => {
             comment_date: formattedDate,
             ...data,
         };
-        axiosPublic.patch(`/all-survey/${survey?._id}`, commentData)
+        axiosSecure.patch(`/all-survey/${survey?._id}`, commentData)
             .then(() => {
                 const myComent = { ...commentData, email: user?.email, surveyId: survey?._id, };
                 // console.log(myComent);
-                axiosPublic.post(`/comment-survey`, myComent)
+                axiosSecure.post(`/comment-survey`, myComent)
                     .then(() => {
                         // console.log("Comment Added ");
                         refetch();

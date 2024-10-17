@@ -1,19 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../hooks/useAuth";
-import { axiosPublic } from "../../hooks/useAxiosPublic";
 import Loading from "../../Layout/Shared/Loading";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const UserComments = () => {
     const { user } = useAuth();
+    const axiosSecure = useAxiosSecure();
 
     // Fetching the user's comments using React Query
     const { data: comments = [], error, isLoading } = useQuery({
         queryKey: ['userComments', user?.email],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/comment-survey/${user?.email}`);
+            const res = await axiosSecure.get(`/comment-survey/${user?.email}`);
             return res.data;
         }
     });

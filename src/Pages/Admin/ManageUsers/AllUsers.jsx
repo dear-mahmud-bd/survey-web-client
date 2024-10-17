@@ -1,14 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import { axiosPublic } from "../../../hooks/useAxiosPublic";
 import Loading from "../../../Layout/Shared/Loading";
 import User from "./User";
 import { Helmet } from "react-helmet";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AllUsers = () => {
+    const axiosSecure = useAxiosSecure();
     const { data: usersData = [], isPending: loading, refetch } = useQuery({
         queryKey: ['allUsers'],
         queryFn: async () => {
-            const res = await axiosPublic.get('/all-users');
+            const res = await axiosSecure.get('/all-users');
             return res.data;
         }
     });
@@ -39,7 +40,7 @@ const AllUsers = () => {
             </Helmet>
             <div className='mb-5 py-5 bg-gray-200 rounded-lg text-center'>
                 <h1 className=' text-4xl font-bold'>All Users</h1>
-            <p>If the surveyor is given admin powers, he will lose the surveyor powers</p>
+                <p>If the surveyor is given admin powers, he will lose the surveyor powers</p>
             </div>
             <div role="tablist" className="tabs tabs-lifted border-l-0">
                 <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="All_Users" defaultChecked />

@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { showToast, sweetToast } from '../../utility/useToast';
-import { axiosPublic } from '../../hooks/useAxiosPublic';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const Survey = ({ surveys, refetch }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedSurvey, setSelectedSurvey] = useState(null);
     const [reason, setReason] = useState('');
+    const axiosSecure = useAxiosSecure();
 
 
     const handleSubmitFeedback = () => {
@@ -17,9 +18,9 @@ const Survey = ({ surveys, refetch }) => {
         }
         const feedbackData = { ...selectedSurvey, reason: reason };
         // console.log(feedbackData);
-        axiosPublic.post(`/survey-feedback`, feedbackData)
+        axiosSecure.post(`/survey-feedback`, feedbackData)
             .then(() => {
-                axiosPublic.patch(`/survey-status/${selectedSurvey.surveyId}`, selectedSurvey)
+                axiosSecure.patch(`/survey-status/${selectedSurvey.surveyId}`, selectedSurvey)
                     .then(() => {
                         // console.log("Survey");
                         sweetToast('Success!', 'Feedback Added Successfully', 'success');
@@ -49,7 +50,7 @@ const Survey = ({ surveys, refetch }) => {
             }).then((result) => {
                 if (result.isConfirmed) {
                     // console.log(selectedSurvey?.surveyId); // first time it show undefine why
-                    axiosPublic.patch(`/survey-status/${_id}`, {value}) // first time it show undefine why
+                    axiosSecure.patch(`/survey-status/${_id}`, {value}) // first time it show undefine why
                         .then(() => {
                             console.log("Survey");
                             showToast('success','Status updated to published')

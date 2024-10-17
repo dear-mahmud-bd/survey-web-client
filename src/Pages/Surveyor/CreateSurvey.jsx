@@ -4,12 +4,13 @@ import { useEffect, useState } from 'react';
 import { DayPicker } from 'react-day-picker';
 import "react-day-picker/style.css";
 import useAuth from '../../hooks/useAuth';
-import { axiosPublic } from '../../hooks/useAxiosPublic';
 import { useNavigate } from 'react-router-dom';
 import { sweetToast } from '../../utility/useToast';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const CreateSurvey = () => {
     const { user } = useAuth();
+    const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
 
     const [selectedDate, setSelectedDate] = useState(null);
@@ -60,7 +61,7 @@ const CreateSurvey = () => {
         };
         // console.log('Formatted Survey Data:', surveyData);
 
-        axiosPublic.post(`/all-survey`, surveyData)
+        axiosSecure.post(`/all-survey`, surveyData)
             .then(() => {
                 // console.log("Survey Added ");
                 sweetToast('Success!', 'Survey Added Successfully', 'success');

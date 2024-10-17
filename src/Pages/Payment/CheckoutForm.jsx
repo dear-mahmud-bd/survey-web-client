@@ -1,10 +1,10 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { axiosPublic } from "../../hooks/useAxiosPublic";
 import { showToast } from "../../utility/useToast";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import useProUser from "../../hooks/useProUser";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const CheckoutForm = () => {
@@ -12,6 +12,7 @@ const CheckoutForm = () => {
     const { user } = useAuth();
     const stripe = useStripe();
     const elements = useElements();
+    const axiosSecure = useAxiosSecure();
 
     const navigate = useNavigate();
     const [error, setError] = useState('');
@@ -19,15 +20,15 @@ const CheckoutForm = () => {
     const [transactionId, setTransactionId] = useState('');
 
     useEffect(() => {
-        if(!isProUser){
-            axiosPublic.post('/create-payment-intent', { price: 111 })
-            .then(res => {
-                // console.log('Client Secret:', res.data.clientSecret); // Ensure clientSecret is fetched
-                setClientSecret(res.data.clientSecret);
-            })
-            .catch(() => console.log('Error fetching clientSecret:'));
+        if (!isProUser) {
+            axiosSecure.post('/create-payment-intent', { price: 111 })
+                .then(res => {
+                    // console.log('Client Secret:', res.data.clientSecret); // Ensure clientSecret is fetched
+                    setClientSecret(res.data.clientSecret);
+                })
+                .catch(() => console.log('Error fetching clientSecret:'));
         }
-    }, [isProUser]);
+    }, [isProUser, axiosSecure]);
 
 
 
@@ -83,7 +84,7 @@ const CheckoutForm = () => {
                     date: new Date(), // utc date convert. use moment js to 
                 }
 
-                const res = await axiosPublic.post('/payments', payment);
+                const res = await axiosSecure.post('/payments', payment);
                 // console.log('payment saved', res.data);
                 if (res.data?.paymentResult?.insertedId) {
                     showToast('success', 'Thank You for your Subscription');
@@ -100,7 +101,7 @@ const CheckoutForm = () => {
                 options={{
                     style: {
                         base: { fontSize: '16px', color: '#424770', '::placeholder': { color: '#aab7c4', }, },
-                        invalid: { color: '#9e2146'},
+                        invalid: { color: '#9e2146' },
                     }
                 }}
             />

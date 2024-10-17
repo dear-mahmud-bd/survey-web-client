@@ -1,19 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet";
-import { axiosPublic } from "../../hooks/useAxiosPublic";
 import useAuth from "../../hooks/useAuth";
 import Loading from "../../Layout/Shared/Loading";
 import Survey from "./Survey";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const MySurveys = () => {
     const { user } = useAuth();
+    const axiosSecure = useAxiosSecure();
 
     const { data: mySurveyData = [], isPending: loading } = useQuery({
         queryKey: ['mySurvey'],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/my-survey/${user?.email}`);
+            const res = await axiosSecure.get(`/my-survey/${user?.email}`);
             return res.data;
         }
     });

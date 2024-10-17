@@ -50,7 +50,7 @@ const UserProfile = () => {
             <div className="p-2 rounded-lg md:flex justify-between items-center">
                 <div className="md:w-1/2 pb-5 flex justify-center items-cente mx-auto">
                     <div className='flex flex-col items-center'>
-                        <img src={`${user?.photoURL ? user?.photoURL : 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'}`} alt="User Profile" className="w-32 h-32 rounded-full shadow-xl" />
+                        <img src={`${user?.photoURL ? user?.photoURL : 'https://i.ibb.co.com/jD1GTj4/user.png'}`} alt="User Profile" className="w-32 h-32 rounded-full shadow-xl" />
                         <h2 className="text-2xl font-semibold mt-2">{user?.displayName}</h2>
                         <p className="text-gray-600">{user?.email}</p>
                     </div>

@@ -1,17 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
-import useAxiosPublic from "./useAxiosPublic";
+import useAxiosSecure from "./useAxiosSecure";
 
 
 const useProUser = () => {
     const { user, loading } = useAuth();
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     const { data: isProUser, isPending: isProUserLoading } = useQuery({
         queryKey: ['isProUser'],
         enabled: !loading,
         queryFn: async () => {
             // console.log('Checking Pro_User: ', user?.email)
-            const res = await axiosPublic.get(`/users/pro_user/${user.email}`);
+            const res = await axiosSecure.get(`/users/pro_user/${user.email}`);
             // console.log(res.data);
             return res.data?.pro_user;
             // return res.data;
