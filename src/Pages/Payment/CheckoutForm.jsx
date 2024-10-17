@@ -22,7 +22,7 @@ const CheckoutForm = () => {
         if(!isProUser){
             axiosPublic.post('/create-payment-intent', { price: 111 })
             .then(res => {
-                console.log('Client Secret:', res.data.clientSecret); // Ensure clientSecret is fetched
+                // console.log('Client Secret:', res.data.clientSecret); // Ensure clientSecret is fetched
                 setClientSecret(res.data.clientSecret);
             })
             .catch(err => console.log('Error fetching clientSecret:', err));

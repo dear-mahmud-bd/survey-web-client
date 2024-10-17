@@ -25,6 +25,14 @@ const SurveyDetails = () => {
             return res.data;
         }
     });
+    // console.log(survey);
+
+    const deadlineISO = survey?.deadlineISO?.$date; // ISO deadline from your API
+    const deadlineDate = new Date(deadlineISO);  // Convert the deadlineISO to a Date object
+    const currentDate = new Date(); // Get the current date and time    
+    const isDeadlinePassed = currentDate > deadlineDate; // Compare the deadline date with the current date
+    console.log(isDeadlinePassed);
+
 
     const { user } = useAuth();
     // const [vote, setVote] = useState(null);
@@ -83,7 +91,7 @@ const SurveyDetails = () => {
 
 
     if (isLoading) return <Loading />
-    
+
     if (!survey || error) {
         return (
             <div className="text-center flex flex-col items-center justify-center h-60 md:h-96">
@@ -146,9 +154,19 @@ const SurveyDetails = () => {
                         {/* Take Survey Button */}
                         <div className="flex justify-between items-center">
                             <Link to={`/survey-report/${_id}`} className="underline"> Report on this survey</Link>
-                            <button data-tooltip-id="my-tooltip" data-tooltip-content={tooltipContent} onClick={() => document.getElementById('voting_modal').showModal()} disabled={!user} className={`mt-4 px-6 py-2 text-white font-semibold rounded-lg shadow transition duration-300 ${user ? 'bg-customPurple2 hover:bg-customPurple4 cursor-pointer' : 'bg-gray-400 cursor-not-allowed'}`}>
-                                Take Survey
-                            </button>
+                            {survey.status === 'unpublished' ?
+                                <p className="text-warning">Wait for publishing to participate Vote</p>
+                                :
+                                <>
+                                    {isDeadlinePassed ?
+                                        <Link to={`/survey-result/${survey?._id}`} className="btn-link">See Result</Link>
+                                        :
+                                        <button data-tooltip-id="my-tooltip" data-tooltip-content={tooltipContent} onClick={() => document.getElementById('voting_modal').showModal()} disabled={!user} className={`mt-4 px-6 py-2 text-white font-semibold rounded-lg shadow transition duration-300 ${user ? 'bg-customPurple2 hover:bg-customPurple4 cursor-pointer' : 'bg-gray-400 cursor-not-allowed'}`}>
+                                            Take Survey
+                                        </button>
+                                    }
+                                </>
+                            }
                         </div>
                         {/* Open the modal using document.getElementById('ID').showModal() method */}
                         <dialog id="voting_modal" className="modal modal-bottom sm:modal-middle">

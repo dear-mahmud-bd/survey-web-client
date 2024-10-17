@@ -16,7 +16,7 @@ const CreateSurvey = () => {
     const [showCalendar, setShowCalendar] = useState(false);
     const today = new Date();
     const threeDaysLater = new Date(today);
-    threeDaysLater.setDate(today.getDate() + 4);
+    threeDaysLater.setDate(today.getDate() + 0);
     const isFriday = (date) => date.getDay() === 5;
     const handleDateSelect = (date) => {
         setSelectedDate(date);

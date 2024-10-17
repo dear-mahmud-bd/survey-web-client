@@ -24,6 +24,7 @@ import UserParticipation from "../Pages/Private/UserParticipation";
 import UserComments from "../Pages/Private/UserComments";
 import AllSurvey from "../Pages/Admin/AllSurvey";
 import SurveyFeedback from "../Pages/Surveyor/SurveyFeedback";
+import VoterResult from "../Pages/Private/VoterResult";
 
 
 const router = createBrowserRouter([
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
             { path: '/', element: <Home /> },
             { path: '/all-survey', element: <Surveys /> },
             { path: '/all-survey/:_id', element: <SurveyDetails />, },
+            { path: '/survey-result/:_id', element: <VoterResult /> },
             { path: '/sign-in', element: <SignIn /> },
             { path: '/sign-up', element: <SignUp /> },
             { path: '/membership', element: <Membership /> },
@@ -56,7 +58,6 @@ const router = createBrowserRouter([
             { path: 'my-participation', element: <UserParticipation/> },
             { path: 'my-report', element: <UserReport/> },
             { path: 'my-comments', element: <UserComments/> }, 
-            { path: 'payment-history', element: <p>Payment History</p> }, 
 
             
             // Surveyor Route...

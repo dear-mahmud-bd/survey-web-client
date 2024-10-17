@@ -15,7 +15,7 @@ const UserParticipation = () => {
             return res.data;
         }
     });
-    console.log(userParticipation);
+    // console.log(userParticipation);
     
 
     if (isLoading) return <Loading />;
