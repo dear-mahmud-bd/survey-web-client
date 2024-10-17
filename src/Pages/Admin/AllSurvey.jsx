@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import useAllSurveys from "../../hooks/useAllSurveys";
 import Loading from "../../Layout/Shared/Loading";
 import Survey from "./Survey";
@@ -13,6 +14,9 @@ const AllSurvey = () => {
 
     return (
         <div>
+            <Helmet>
+                <title> QueryQuotient | All Surveys Status</title>
+            </Helmet>
             <div className='mb-5 py-5 bg-gray-200 rounded-lg'>
                 <h1 className='text-center text-4xl font-bold'>All Survey Status</h1>
             </div>

@@ -31,7 +31,7 @@ const SurveyDetails = () => {
     const deadlineDate = new Date(deadlineISO);  // Convert the deadlineISO to a Date object
     const currentDate = new Date(); // Get the current date and time    
     const isDeadlinePassed = currentDate > deadlineDate; // Compare the deadline date with the current date
-    console.log(isDeadlinePassed);
+    // console.log(isDeadlinePassed);
 
 
     const { user } = useAuth();
@@ -43,7 +43,7 @@ const SurveyDetails = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmitVote = (formData) => {
         const data = { ...formData, email: user?.email };
-        console.log("User Vote:", data);
+        // console.log("User Vote:", data);
         axiosPublic.put(`/all-survey/${survey?._id}`, data)
             .then(() => {
                 const voter = { ...data, name: user?.displayName };
@@ -78,10 +78,10 @@ const SurveyDetails = () => {
         axiosPublic.patch(`/all-survey/${survey?._id}`, commentData)
             .then(() => {
                 const myComent = { ...commentData, email: user?.email, surveyId: survey?._id, };
-                console.log(myComent);
+                // console.log(myComent);
                 axiosPublic.post(`/comment-survey`, myComent)
                     .then(() => {
-                        console.log("Comment Added ");
+                        // console.log("Comment Added ");
                         refetch();
                     })
             })
@@ -96,7 +96,7 @@ const SurveyDetails = () => {
         return (
             <div className="text-center flex flex-col items-center justify-center h-60 md:h-96">
                 <Helmet>
-                    <title>Survey Not Found</title>
+                    <title>QueryQuotient | Survey Not Found</title>
                 </Helmet>
                 <h1 className="text-4xl font-bold text-red-600">Survey Not Found</h1>
                 <p className="text-lg font-semibold text-gray-600 mt-2">Sorry, the Survey you are looking for not here.</p>
@@ -106,7 +106,7 @@ const SurveyDetails = () => {
     return (
         <div>
             <Helmet>
-                <title>{survey.title}</title>
+                <title>QueryQuotient | {survey.title}</title>
             </Helmet>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

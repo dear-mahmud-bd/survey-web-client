@@ -18,13 +18,14 @@ const UserComments = () => {
         }
     });
 
+
     if (isLoading) return <Loading />;
 
     if (error) {
         return (
             <div className="text-center flex flex-col items-center justify-center h-60 md:h-96">
                 <Helmet>
-                    <title>Comments Not Found</title>
+                    <title>QueryQuotient | Comments Not Found</title>
                 </Helmet>
                 <h1 className="text-4xl font-bold text-red-600">Comments Not Found</h1>
                 <p className="text-lg font-semibold text-gray-600 mt-2">
@@ -36,6 +37,9 @@ const UserComments = () => {
 
     return (
         <div className="container mx-auto p-4">
+            <Helmet>
+                <title>QueryQuotient | My Comments </title>
+            </Helmet>
             <div className='mb-5 py-5 bg-gray-200 rounded-lg'>
                 <h1 className='text-center text-4xl font-bold'>My Comments</h1>
             </div>
@@ -54,6 +58,12 @@ const UserComments = () => {
                     </div>
                 ))}
             </div>
+            {comments.length === 0 && <div className="text-center">
+                <h1 className="text-4xl font-bold text-gray-600">No Comments Available</h1>
+                <p className="text-lg font-semibold text-gray-500 mt-2">
+                    You have not made any comments yet.
+                </p>
+            </div>}
         </div>
     );
 };

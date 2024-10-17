@@ -37,10 +37,10 @@ const SurveyReport = () => {
             report_date: formattedDate,
             ...data,
         };
-        console.log("Report Data:", reportData);
+        // console.log("Report Data:", reportData);
         axiosPublic.post(`/report-survey`, reportData)
             .then(() => {
-                console.log("Report Added ");
+                // console.log("Report Added ");
                 sweetToast('Success!', 'Report Added Successfully', 'success');
                 navigate('/membership');
             })
@@ -52,7 +52,7 @@ const SurveyReport = () => {
         return (
             <div className="text-center flex flex-col items-center justify-center h-60 md:h-96">
                 <Helmet>
-                    <title>Survey Not Found</title>
+                    <title>QueryQuotient | Survey Not Found</title>
                 </Helmet>
                 <h1 className="text-4xl font-bold text-red-600">Survey Not Found</h1>
                 <p className="text-lg font-semibold text-gray-600 mt-2">Sorry, the Survey you are looking for is not here.</p>
@@ -65,7 +65,7 @@ const SurveyReport = () => {
     return (
         <div className="container mx-auto p-6">
             <Helmet>
-                <title>Report Survey | {survey.title}</title>
+                <title>QueryQuotient | Report Survey -{survey.title}</title>
             </Helmet>
 
             <div className="max-w-xl mx-auto">

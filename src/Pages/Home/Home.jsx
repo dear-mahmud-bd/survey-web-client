@@ -9,7 +9,7 @@ const Home = () => {
     return (
         <div>
             <Helmet>
-                <title>QueryQuotient | Home</title>
+                <title> QueryQuotient | Home</title>
             </Helmet>
             <Banner/>
             <LatestSurveys/> 

@@ -16,7 +16,7 @@ const UserParticipation = () => {
         }
     });
     // console.log(userParticipation);
-    
+
 
     if (isLoading) return <Loading />;
     if (!userParticipation.length || error) {
@@ -33,6 +33,10 @@ const UserParticipation = () => {
 
     return (
         <div className="container mx-auto">
+            <Helmet>
+                <title>QueryQuotient | My Participation</title>
+            </Helmet>
+
             <div className='mb-5 py-5 bg-gray-200 rounded-lg'>
                 <h1 className='text-center text-4xl font-bold'>My Survey Participation</h1>
             </div>
@@ -43,7 +47,7 @@ const UserParticipation = () => {
                         <tr>
                             <th>Serial</th>
                             <th>Survey Title</th>
-                            <th>Your Vote</th>
+                            <th>My Vote</th>
                             <th>See Survey</th>
                         </tr>
                     </thead>

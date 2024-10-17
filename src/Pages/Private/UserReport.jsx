@@ -21,7 +21,7 @@ const UserReport = () => {
         return (
             <div className="text-center flex flex-col items-center justify-center h-60 md:h-96">
                 <Helmet>
-                    <title>Report Not Found</title>
+                    <title>QueryQuotient | Report Not Found</title>
                 </Helmet>
                 <h1 className="text-4xl font-bold text-red-600">Report Not Found</h1>
                 <p className="text-lg font-semibold text-gray-600 mt-2">Sorry, Failed to load report or no report available.</p>
@@ -30,6 +30,9 @@ const UserReport = () => {
     }
     return (
         <div className="container mx-auto">
+            <Helmet>
+                    <title>QueryQuotient | My Added Report</title>
+                </Helmet>
             <div className='mb-5 py-5 bg-gray-200 rounded-lg'>
                 <h1 className='text-center text-4xl font-bold'>My Report</h1>
             </div>

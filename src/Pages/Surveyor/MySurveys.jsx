@@ -24,7 +24,7 @@ const MySurveys = () => {
     return (
         <div className="max-w-5xl mx-auto">
             <Helmet>
-                <title>All My Surveys</title>
+                <title>QueryQuotient | All My Surveys</title>
             </Helmet>
 
             <h2 className="text-center text-3xl font-semibold mb-8 underline decoration-customPurple2 underline-offset-8">My added Survey</h2>

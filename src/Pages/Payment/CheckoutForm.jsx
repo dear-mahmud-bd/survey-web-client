@@ -25,7 +25,7 @@ const CheckoutForm = () => {
                 // console.log('Client Secret:', res.data.clientSecret); // Ensure clientSecret is fetched
                 setClientSecret(res.data.clientSecret);
             })
-            .catch(err => console.log('Error fetching clientSecret:', err));
+            .catch(() => console.log('Error fetching clientSecret:'));
         }
     }, [isProUser]);
 
@@ -37,13 +37,14 @@ const CheckoutForm = () => {
 
         const card = elements.getElement(CardElement)
         if (card === null) return;
+        // eslint-disable-next-line no-unused-vars
         const { error, paymentMethod } = await stripe.createPaymentMethod({ type: 'card', card });
 
         if (error) {
             // console.log('payment error', error);
             setError(error.message);
         } else {
-            console.log('payment method', paymentMethod)
+            // console.log('payment method', paymentMethod)
             setError('');
         }
 

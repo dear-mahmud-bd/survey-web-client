@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { axiosPublic } from "../../../hooks/useAxiosPublic";
 import Loading from "../../../Layout/Shared/Loading";
 import User from "./User";
+import { Helmet } from "react-helmet";
 
 const AllUsers = () => {
     const { data: usersData = [], isPending: loading, refetch } = useQuery({
@@ -20,12 +21,26 @@ const AllUsers = () => {
     const surveyors = usersData.filter(user => user.user_role === 'surveyor');
     const admins = usersData.filter(user => user.user_role === 'admin');
 
+    if (!usersData) {
+        return (
+            <div>
+                <Helmet>
+                    <title>QueryQuotient | Users Not Found</title>
+                </Helmet>
+                <h1 className="text-4xl font-bold text-red-600">Users Not Found</h1>
+                <p className="text-lg font-semibold text-gray-600 mt-2">Sorry, the Users you are looking for  not here.</p>
+            </div>
+        );
+    }
     return (
         <div>
-            <div className='mb-5 py-5 bg-gray-200 rounded-lg'>
-                <h1 className='text-center text-4xl font-bold'>All Users</h1>
+            <Helmet>
+                <title> QueryQuotient | All Users</title>
+            </Helmet>
+            <div className='mb-5 py-5 bg-gray-200 rounded-lg text-center'>
+                <h1 className=' text-4xl font-bold'>All Users</h1>
+            <p>If the surveyor is given admin powers, he will lose the surveyor powers</p>
             </div>
-
             <div role="tablist" className="tabs tabs-lifted border-l-0">
                 <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="All_Users" defaultChecked />
                 <div role="tabpanel" className="tab-content bg-base-100 border-b-0 border-x-0 border-base-300 p-1">

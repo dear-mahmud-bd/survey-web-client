@@ -1,6 +1,7 @@
 import { CgInfinity } from "react-icons/cg";
 import Payment from "../Payment/Payment";
 import useProUser from "../../hooks/useProUser";
+import { Helmet } from "react-helmet";
 
 const Membership = () => {
     const [isProUser] = useProUser();
@@ -20,7 +21,9 @@ const Membership = () => {
 
     return (
         <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden">
-            
+            <Helmet>
+                <title> QueryQuotient | Membership</title>
+            </Helmet>
             <div className="flex-1 p-6 border-r border-gray-300">
                 <h1 className="text-3xl font-bold">{subscriptionDetails.title}</h1>
                 <p className="mt-2 text-lg">{subscriptionDetails.description}</p>

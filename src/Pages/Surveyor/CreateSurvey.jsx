@@ -39,7 +39,7 @@ const CreateSurvey = () => {
         const formattedCreatedDate = createdDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
         const deadlineISO = new Date(formData.surveyDeadline).toISOString();
         const createdISO = createdDate.toISOString();
-        console.log(deadlineISO, createdISO);
+        // console.log(deadlineISO, createdISO);
 
 
         // Construct the formatted data object
@@ -58,11 +58,11 @@ const CreateSurvey = () => {
             question: formData.question,
             voters: [],
         };
-        console.log('Formatted Survey Data:', surveyData);
+        // console.log('Formatted Survey Data:', surveyData);
 
         axiosPublic.post(`/all-survey`, surveyData)
             .then(() => {
-                console.log("Survey Added ");
+                // console.log("Survey Added ");
                 sweetToast('Success!', 'Survey Added Successfully', 'success');
                 navigate('/dashboard/my-survey');
             })
@@ -73,7 +73,7 @@ const CreateSurvey = () => {
     return (
         <div className="max-w-4xl mx-auto my-5">
             <Helmet>
-                <title>Create a Survey</title>
+                <title>QueryQuotient | Create a Survey</title>
             </Helmet>
             <h3 className="font-bold text-2xl text-center mb-4">Create a Survey (YES-NO Question Only)</h3>
 

@@ -2,6 +2,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { axiosPublic } from '../../hooks/useAxiosPublic';
 import Loading from '../../Layout/Shared/Loading';
+import { Helmet } from 'react-helmet';
 
 const PaymentList = () => {
     const { data: payments = [], isPending: loading } = useQuery({
@@ -14,10 +15,19 @@ const PaymentList = () => {
 
     if (loading) return <Loading />
     if (!payments) {
-        return <div>Error fetching payment history: </div>;
+        return <div>
+            <Helmet>
+                <title> QueryQuotient | Payment History Not Available</title>
+            </Helmet>
+            <h1 className="text-4xl font-bold text-green-600">No Payment History</h1>
+            <p className="text-lg font-semibold text-gray-600 mt-2">There is no Payment History or something wrong.</p>
+        </div>;
     }
     return (
         <div>
+            <Helmet>
+                <title> QueryQuotient | All Payment History</title>
+            </Helmet>
             <div className='mb-5 py-5 bg-gray-200 rounded-lg'>
                 <h1 className='text-center text-4xl font-bold'>All Payment History</h1>
             </div>

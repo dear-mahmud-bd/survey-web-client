@@ -16,21 +16,24 @@ const SurveyFeedback = () => {
         }
     });
 
-    if (isLoading) return <Loading/>;
+    if (isLoading) return <Loading />;
     if (error || !feedback) {
         return (
             <div className="text-center flex flex-col items-center justify-center h-60 md:h-96">
                 <Helmet>
-                    <title>No Feedback</title>
+                    <title>QueryQuotient | No Feedback</title>
                 </Helmet>
                 <h1 className="text-4xl font-bold text-green-600">No Feedback</h1>
-                <p className="text-lg font-semibold text-gray-600 mt-2">There is no feedback you needed.</p>
+                <p className="text-lg font-semibold text-gray-600 mt-2">There is no feedback you needed or something wrong.</p>
             </div>
         );
     }
 
     return (
         <div>
+            <Helmet>
+                <title>QueryQuotient | My Survey Feedback</title>
+            </Helmet>
             <div className='mb-5 py-5 bg-gray-200 rounded-lg'>
                 <h1 className='text-center text-4xl font-bold'>Survey Feedback</h1>
             </div>

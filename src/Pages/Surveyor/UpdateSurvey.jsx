@@ -55,7 +55,7 @@ const UpdateSurvey = () => {
         const data = { ...formData, deadlineISO: { $date: deadlineISO } };
         axiosPublic.put(`/my-survey/${updateSurvey?._id}`, data)
             .then(() => {
-                console.log("Survey Updated ");
+                // console.log("Survey Updated ");
                 showToast('success', 'Survey Updated successfully');
                 navigate('/dashboard/my-survey');
             })
@@ -66,17 +66,17 @@ const UpdateSurvey = () => {
         return (
             <div className="text-center flex flex-col items-center justify-center h-60 md:h-96">
                 <Helmet>
-                    <title>Survey Not Found</title>
+                    <title>QueryQuotient | Survey Not Found</title>
                 </Helmet>
                 <h1 className="text-4xl font-bold text-red-600">Survey Not Found</h1>
-                <p className="text-lg font-semibold text-gray-600 mt-2">Sorry, the Survey you are looking for not here.</p>
+                <p className="text-lg font-semibold text-gray-600 mt-2">Sorry, the Survey you are looking for updating not here.</p>
             </div>
         );
     }
     return (
         <div className="max-w-4xl mx-auto my-5">
             <Helmet>
-                <title>Update Your Survey</title>
+                <title>QueryQuotient | Update Survey -{updateSurvey?.title}</title>
             </Helmet>
             <h3 className="font-bold text-2xl text-center mb-4">Update Survey...</h3>
 

@@ -40,7 +40,7 @@ const UserProfile = () => {
     return (
         <div>
             <Helmet>
-                <title>My Profile</title>
+                <title>My Profile -{user?.displayName}</title>
             </Helmet>
             
             <div className='mb-5 py-5 bg-gray-200 rounded-lg'>

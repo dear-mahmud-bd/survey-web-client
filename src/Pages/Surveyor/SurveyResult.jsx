@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { axiosPublic } from "../../hooks/useAxiosPublic";
 import Loading from "../../Layout/Shared/Loading";
 import { Helmet } from "react-helmet";
-import { Cell,  Pie, PieChart, Tooltip } from "recharts";
+import { Cell, Pie, PieChart, Tooltip } from "recharts";
 
 
 const SurveyResult = () => {
@@ -16,14 +16,14 @@ const SurveyResult = () => {
             return res.data;
         }
     });
-    console.log(surveyResult);
+    // console.log(surveyResult);
 
     if (isLoading) return <Loading />
     if (error) {
         return (
             <div className="text-center flex flex-col items-center justify-center h-60 md:h-96">
                 <Helmet>
-                    <title>Survey Result Not Found</title>
+                    <title>QueryQuotient | Survey Result Not Found</title>
                 </Helmet>
                 <h1 className="text-4xl font-bold text-red-600">Survey Result Not Found</h1>
                 <p className="text-lg font-semibold text-gray-600 mt-2">Sorry, the Survey you are looking for not here.</p>
@@ -34,7 +34,7 @@ const SurveyResult = () => {
         return (
             <div className="text-center flex flex-col items-center justify-center h-60 md:h-96">
                 <Helmet>
-                    <title>No one voted</title>
+                    <title>QueryQuotient | No one voted</title>
                 </Helmet>
                 <h1 className="text-4xl font-bold text-red-600">No one voted</h1>
                 <p className="text-lg font-semibold text-gray-600 mt-2">Sorry, there are no votes on the survey results you entered yet.</p>
@@ -48,8 +48,15 @@ const SurveyResult = () => {
     ];
     return (
         <div>
+            <Helmet>
+                <title>QueryQuotient | My Survey Result -{surveyResult.title}</title>
+            </Helmet>
             <div className='mb-5 py-5 bg-gray-200 rounded-lg'>
                 <h1 className='text-center text-4xl font-bold'>Survey Result</h1>
+            </div>
+            <div className="mb-2">
+                <h1 className="text-3xl font-bold text-center">{surveyResult.title}</h1>
+                <p className="text-lg text-center text-gray-500 mt-2">Category: {surveyResult.category}</p>
             </div>
             <div role="tablist" className="tabs tabs-lifted border-l-0">
                 <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Chart_View" defaultChecked />

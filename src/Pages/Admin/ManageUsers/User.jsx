@@ -8,7 +8,7 @@ const User = ({ allUsers, refetch }) => {
     // console.log(allUsers);
     const handleRoleChange = (_id, role) => {
         const data = { role: role };
-        console.log(_id, role, data);
+        // console.log(_id, role, data);
         Swal.fire({
             title: 'Are you sure?',
             text: `You want to change User Role as ${role}`,

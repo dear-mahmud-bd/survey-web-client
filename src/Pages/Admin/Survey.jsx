@@ -16,12 +16,12 @@ const Survey = ({ surveys, refetch }) => {
             return;
         }
         const feedbackData = { ...selectedSurvey, reason: reason };
-        console.log(feedbackData);
+        // console.log(feedbackData);
         axiosPublic.post(`/survey-feedback`, feedbackData)
             .then(() => {
                 axiosPublic.patch(`/survey-status/${selectedSurvey.surveyId}`, selectedSurvey)
                     .then(() => {
-                        console.log("Survey");
+                        // console.log("Survey");
                         sweetToast('Success!', 'Feedback Added Successfully', 'success');
                         refetch();
                     })
